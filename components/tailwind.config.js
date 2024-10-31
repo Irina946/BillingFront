@@ -37,11 +37,17 @@ export default {
     },
     extend: {
       width: {
-        "325": "325px"
+        "325": "325px",
+        "300": "300px"
       },
       height: {
-        "50": "50px"
+        "50": "50px",
+        "45": "45px"
       }
+    },
+    borderRadius: {
+      "8": "8px",
+      "10": "10px"
     }
   },
   plugins: [],

@@ -11,7 +11,7 @@ export const Input = (props: InputProps): JSX.Element => {
         className="
             border-blackGray 
             border-2 
-            rounded-lg 
+            rounded-8 
             p-p-input 
             w-325 
             h-50
