@@ -1,5 +1,6 @@
 interface ButtonBigVioletProps {
-    title: string
+    title: string,
+    type?: "submit" | "reset" | "button"
 }
 
 
@@ -21,6 +22,7 @@ export const ButtonBigViolet = (props: ButtonBigVioletProps): JSX.Element => {
             active:w-300
             active:h-45
         "
+        type={props.type}
         >
             {props.title}
         </button>
