@@ -43,6 +43,10 @@ export default {
       height: {
         "50": "50px",
         "45": "45px"
+      },
+      inset: {
+        "35": "35px",
+        "16": "16px"
       }
     },
     borderRadius: {
