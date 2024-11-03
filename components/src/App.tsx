@@ -1,6 +1,5 @@
 import './App.css'
 import { ButtonBigViolet } from './components/button/buttonBig'
-import { FormAuthorizationClient } from './components/form/formAuthorizationClient'
 import { Input } from './components/input/input'
 
 function App() {
@@ -17,11 +16,6 @@ function App() {
         <ButtonBigViolet 
         title='Войти'
       />
-
-      <FormAuthorizationClient onSubmit={function (): {} {
-        throw new Error('Function not implemented.')
-      } } />
-
       
     </>
    
