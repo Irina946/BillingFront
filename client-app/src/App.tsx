@@ -1,4 +1,3 @@
-import { Input } from "components/Input";
 import './App.css'
 import { Authorization } from "./pages/authorization/authoritzation";
 import { observer } from "mobx-react-lite";
