@@ -1,43 +1,37 @@
 import { Input } from "components/Input";
 import { ButtonBigViolet } from "components/ButtonBig";
 import { SubmitHandler, useForm } from "react-hook-form";
-
-import { login } from "../../auth/auth";
 import { useNavigate } from "react-router";
-
+import { login } from "../../auth/auth";
 
 interface IForm {
-    number: string
+    email: string,
     password: string
 }
 
 export const Authorization = (): JSX.Element => {
-
     const { register, handleSubmit } = useForm<IForm>()
 
     let navigate = useNavigate();
 
-
-
     const handleLogin: SubmitHandler<IForm> = (formValue) => {
 
-        login(formValue.number, formValue.password)
+        login(formValue.email, formValue.password)
             .then(() => {
-                navigate("/personalAccaunt");
+                navigate("/lk");
                 window.location.reload();
             },
                 (error) => {
                     console.log(error);
-                });
-        
+                })
     }
-    
+
     return (
         <form onSubmit={handleSubmit(handleLogin)}>
             <Input
-                type="tel"
-                id="number"
-                placeholder="Введите номер телефона"
+                type="email"
+                id="email"
+                placeholder="Введите email"
                 register={register}
             />
             <Input
@@ -47,11 +41,9 @@ export const Authorization = (): JSX.Element => {
                 register={register}
             />
             <ButtonBigViolet
-                title="Войти"
+                title="Войти"
                 type="submit"
             />
         </form>
-
     )
 }
-

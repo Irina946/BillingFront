@@ -11,8 +11,7 @@ export default defineConfig({
       filename: "remoteEntry.js",
       exposes: {
         "./Input": "src/components/input/input.tsx",
-        "./ButtonBig": "src/components/button/buttonBig.tsx",
-        "./FormAuthorizationClient": "src/components/form/formAuthorizationClient.tsx"
+        "./ButtonBig": "src/components/button/buttonBig.tsx"
       },
       shared: ["react", "react-dom"]
     })

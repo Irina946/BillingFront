@@ -1,15 +1,18 @@
-interface InputProps {
+import React from "react";
+
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     type: string
     placeholder: string
-    id: string
+    id: string,
+    register?: any,
 }
 
-export const Input = (props: InputProps): JSX.Element => {
+export const Input: React.FC<InputProps> = ({ type, placeholder, id, register, ...rest }): JSX.Element => {
     return (
         <div className="relative mb-6">
             <input
-                id={props.id}
-                type={props.type}
+                id={id}
+                type={type}
                 placeholder=""
                 className="
                     mb-10
@@ -32,9 +35,11 @@ export const Input = (props: InputProps): JSX.Element => {
                     peer
                     "
                 required
+                {...register(id)}
+                {...rest}
             />
             <label
-                htmlFor={props.id}
+                htmlFor={id}
                 className="
                 absolute
                 left-4
@@ -54,7 +59,7 @@ export const Input = (props: InputProps): JSX.Element => {
                 peer-focus:text-blackGray
                 peer-focus:top-0
                 "
-            >{props.placeholder}</label>
+            >{placeholder}</label>
         </div>
 
     )
