@@ -1,24 +1,25 @@
-interface ButtonBigVioletProps {
+interface ButtonBigRedProps {
     title: string,
     type?: "submit" | "reset" | "button"
 }
 
 
-export const ButtonBigViolet = (props: ButtonBigVioletProps): JSX.Element => {
+export const ButtonBigRed = (props: ButtonBigRedProps): JSX.Element => {
     return (
         <button
         className="
-            bg-violet
+            bg-red
             text-white
             w-325
             h-50
             rounded-10
+            font-Styreneb-Bold
             font-bold
             text-lg
             align-middle
-            focus:bg-buttonVioletFocus
-            hover:bg-buttonVioletFocus
-            active:bg-violet
+            focus:bg-buttonRedFocus
+            hover:bg-buttonRedFocus
+            active:bg-red
         "
         type={props.type}
         >

@@ -4,6 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import { login } from "../../auth/auth";
 import { useNavigate } from "react-router";
+import Logo from "../../assets/LogoAlfa.svg";
 
 
 interface IForm {
@@ -33,6 +34,7 @@ export const Authorization = (): JSX.Element => {
     }
     
     return (
+        <div>
         <form onSubmit={handleSubmit(handleLogin)}>
             <Input
                 type="tel"
@@ -51,7 +53,7 @@ export const Authorization = (): JSX.Element => {
                 type="submit"
             />
         </form>
-
+        </div>
     )
 }
 

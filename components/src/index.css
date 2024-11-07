@@ -39,9 +39,6 @@ body {
     color: #747bff;
   }
 
-  button {
-    background-color: #f9f9f9;
-  }
 }
 
 
@@ -50,7 +47,6 @@ body {
   src: local("StyreneB-Bold"), 
         url(../fonts/Styrene-B-Bold-Trial.woff2) format("woff2"), 
         url(../fonts/Styrene-B-Bold-Trial.woff) format("woff");
-  font-weight: 700;
 }
 @font-face {
   font-family: "StyreneB";

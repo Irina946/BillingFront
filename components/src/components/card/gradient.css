@@ -1,0 +1,66 @@
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes rotate {
+    0% {
+        --angle: 0deg;
+
+    }
+
+    100% {
+        --angle: 360deg;
+
+    }
+}
+
+.animate-gradient {
+    position: relative;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.animate-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 12px solid transparent;
+    border-image: linear-gradient(var(--angle), #6727CC, #07E2E2) 1;
+    transition: border-image 0.3s;
+    
+}
+
+.animate-gradient:hover::before {
+    animation: rotate 5s linear infinite;
+
+}
+
+.animate-gradient:focus::before {
+    animation: rotate 5s linear infinite;
+
+}
+
+.inner-content {
+    position: relative;
+    z-index: 1;
+    padding: 18px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
