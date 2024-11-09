@@ -11,10 +11,10 @@ export const ButtonEmptyRed = (props: ButtonEmptyRedProps): JSX.Element => {
             bg-white
             text-red
             border-red
-            border-4
-            w-120
-            h-40
-            rounded-10
+            border-[4px]
+            w-[120px]
+            h-[40px]
+            rounded-[10px]
             font-Styreneb-Bold
             text-[16px]
             text-center

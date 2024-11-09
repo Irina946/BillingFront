@@ -11,10 +11,10 @@ export const ButtonEmptyViolet = (props: ButtonEmptyVioletProps): JSX.Element =>
             bg-white
             text-violet
             border-violet
-            border-4
-            w-150
-            h-50
-            rounded-10
+            border-[4px]
+            w-[150px]
+            h-[50px]
+            rounded-[10px]
             font-Styreneb-Bold
             font-bold
             text-lg

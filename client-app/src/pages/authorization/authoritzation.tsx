@@ -1,10 +1,10 @@
 import { Input } from "components/Input";
 import { ButtonBigViolet } from "components/ButtonBig";
 import { SubmitHandler, useForm } from "react-hook-form";
-
+import styles from "./authorization.module.css";
 import { login } from "../../auth/auth";
 import { useNavigate } from "react-router";
-import Logo from "../../assets/LogoAlfa.svg";
+import { Logo } from "components/Logo";
 
 
 interface IForm {
@@ -30,29 +30,35 @@ export const Authorization = (): JSX.Element => {
                 (error) => {
                     console.log(error);
                 });
-        
+
     }
-    
+
     return (
-        <div>
-        <form onSubmit={handleSubmit(handleLogin)}>
-            <Input
-                type="tel"
-                id="number"
-                placeholder="Введите номер телефона"
-                register={register}
-            />
-            <Input
-                type="password"
-                id="password"
-                placeholder="Введите пароль"
-                register={register}
-            />
-            <ButtonBigViolet
-                title="Войти"
-                type="submit"
-            />
-        </form>
+        <div className={styles.container}>
+            <div className="absolute top-[20px] left-[20px]">
+                <Logo size={125} />
+            </div>
+            <div className="font-Styreneb-Bold font-bold text-3xl mb-10">
+                Войдите в личный кабинет
+            </div>
+            <form onSubmit={handleSubmit(handleLogin)}>
+                <Input
+                    type="tel"
+                    id="number"
+                    placeholder="Введите номер телефона"
+                    register={register}
+                />
+                <Input
+                    type="password"
+                    id="password"
+                    placeholder="Введите пароль"
+                    register={register}
+                />
+                <ButtonBigViolet
+                    title="Войти"
+                    type="submit"
+                />
+            </form>
         </div>
     )
 }

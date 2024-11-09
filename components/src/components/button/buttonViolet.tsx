@@ -10,9 +10,9 @@ export const ButtonViolet = (props: ButtonVioletProps): JSX.Element => {
         className="
             bg-violet
             text-white
-            w-150
-            h-50
-            rounded-10
+            w-[150px]
+            h-[50px]
+            rounded-[10px]
             font-Styreneb-Medium
             text-lg
             align-middle
