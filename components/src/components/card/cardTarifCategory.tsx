@@ -28,9 +28,9 @@ export const CardTarifCategory = (props: CardTarifCategoryProps): JSX.Element =>
                 font-medium 
                 text-2xl 
                 text-blackGray
-                pl-8
+                pl-[8px]
                 '>услуг</p>
-                    <Arrow className='pl-8 w-20 h-20'/>
+                    <Arrow className='pl-[8px] w-[20px] h-[20px]'/>
                 </div>
 
             </div>

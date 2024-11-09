@@ -1,4 +1,3 @@
-import './App.css'
 import { ButtonBigViolet } from './components/button/buttonBig'
 import { ButtonBigRed } from './components/button/buttonBigRed'
 import { ButtonEmptyRed } from './components/button/buttonEmptyRed'
@@ -6,6 +5,7 @@ import { ButtonEmptyViolet } from './components/button/buttonEmptyViolet'
 import { ButtonExit } from './components/button/buttonExit'
 import { ButtonViolet } from './components/button/buttonViolet'
 import { CardTarifCategory } from './components/card/cardTarifCategory'
+import { Logo } from './components/logo/logo'
 
 function App() {
 
@@ -44,10 +44,14 @@ function App() {
       </div>
       <div>
         <p className='text-2xl text-left'>Карточка категории тарифа</p>
-        <CardTarifCategory 
+        <CardTarifCategory
           title='Интернет'
           count='12'
         />
+      </div>
+      <div>
+        <p className='text-2xl text-left'>Логотип</p>
+        <Logo size={80}/>
       </div>
     </div>
 

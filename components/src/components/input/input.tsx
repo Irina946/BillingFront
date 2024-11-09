@@ -15,21 +15,21 @@ export const Input: React.FC<InputProps> = ({ type, placeholder, id, register, .
                 type={type}
                 placeholder=""
                 className="
-                    mb-10
+                    mb-[10px]
                     block
                     border-blackGray 
-                    border-2 
-                    rounded-8 
-                    p-p-input 
-                    w-325 
-                    h-50
+                    border-[2px] 
+                    rounded-[8px] 
+                    p-[16px]
+                    w-[325px] 
+                    h-[50px]
                     font-Styreneb-Bold
                     font-bold
                     text-blackGray
                     text-lg
-                    focus:border-4
-                    hover:border-4
-                    active:border-4
+                    focus:border-[4px]
+                    hover:border-[4px]
+                    active:border-[4px]
                     placeholder:text-gray
                     placeholder-transparent
                     peer

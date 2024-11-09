@@ -19,6 +19,8 @@ export default defineConfig({
         "./ButtonEmptyViolet": "src/components/button/buttonEmptyViolet.tsx",
         "./ButtonViolet": "src/components/button/buttonViolet.tsx",
         "./ButtonExit": "src/components/button/buttonExit.tsx",
+        "./cardTarifCategory": "src/components/card/cardTarifCategory.tsx",
+        "./Logo": "src/components/logo/logo.tsx",
       },
       shared: ["react", "react-dom"]
     })

@@ -10,9 +10,9 @@ export const ButtonBigRed = (props: ButtonBigRedProps): JSX.Element => {
         className="
             bg-red
             text-white
-            w-325
-            h-50
-            rounded-10
+            w-[325px]
+            h-[50px]
+            rounded-[10px]
             font-Styreneb-Bold
             font-bold
             text-lg
