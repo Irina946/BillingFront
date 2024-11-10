@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* карта категории тарифа */
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes rotate {
+    0% {
+        --angle: 0deg;
+
+    }
+
+    100% {
+        --angle: 360deg;
+
+    }
+}
+
+.animateGradient {
+    @apply relative overflow-hidden w-[200px] h-[200px] rounded-[15px] p-[8px] flex justify-center items-center;
+}
+
+.animateGradient::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 bottom-0 border-[12px] border-[transparent];
+    border-image: linear-gradient(var(--angle), #6727CC, #07E2E2) 1;
+    transition: border-image 0.3s;
+}
+
+.animateGradient:hover::before,
+.animateGradient:focus::before {
+  animation: rotate 5s linear infinite;
+}
+
+.innerContent {
+    @apply relative p-[18px] bg-white rounded-[10px] flex flex-col justify-between items-center w-full h-full;
+    z-index: 1;
+  }
+
+/* карта баланса */
+.operator,
+.client {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+    @apply rounded-[30px]; 
+}
+
+.operator {
+    @apply w-[450px] h-[250px] p-[30px] text-4xl
+}
+
+.client {
+    @apply w-[550px] h-[350px] py-[40px] px-[45px] text-6xl
+}

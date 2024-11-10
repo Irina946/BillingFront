@@ -14,7 +14,9 @@ interface IForm {
 
 export const Authorization = (): JSX.Element => {
 
-    const { register, handleSubmit } = useForm<IForm>()
+    const { register, handleSubmit, formState } = useForm<IForm>()
+
+    const numberError = formState.errors["number"]?.message;
 
     let navigate = useNavigate();
 
@@ -41,13 +43,17 @@ export const Authorization = (): JSX.Element => {
             <div className="font-Styreneb-Bold font-bold text-3xl mb-10">
                 Войдите в личный кабинет
             </div>
-            <form onSubmit={handleSubmit(handleLogin)}>
+            <form onSubmit={handleSubmit(handleLogin)} className="flex flex-col gap-[15px]">
                 <Input
                     type="tel"
                     id="number"
                     placeholder="Введите номер телефона"
                     register={register}
+                    value="/^7[0-9]{10}$/"
+                    message="Номер телефона должен начинаться с 7 и состоять из 11 цифр"
+                    requiredMessage="Введите номер телефона"
                 />
+                {numberError && <p>{numberError}</p>}
                 <Input
                     type="password"
                     id="password"

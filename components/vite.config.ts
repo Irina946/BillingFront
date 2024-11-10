@@ -21,6 +21,7 @@ export default defineConfig({
         "./ButtonExit": "src/components/button/buttonExit.tsx",
         "./cardTarifCategory": "src/components/card/cardTarifCategory.tsx",
         "./Logo": "src/components/logo/logo.tsx",
+        "./CardBalance": "src/components/card/cardBalance.tsx",
       },
       shared: ["react", "react-dom"]
     })

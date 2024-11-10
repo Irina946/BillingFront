@@ -1,6 +1,6 @@
 export const PersonalAccaunt = (): JSX.Element => {
     return (
-        <div>
+        <div className="p-[70px]">
             PersonalAccaunt
         </div>
     )
