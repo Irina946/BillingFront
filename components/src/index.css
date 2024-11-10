@@ -33,3 +33,19 @@
         url(../fonts/Styrene-B-Thin-Trial.woff) format("woff");
   font-weight: 100;
 }
+
+::-webkit-scrollbar {
+  @apply w-[20px];
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray rounded-[10px];
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-violet rounded-[10px];
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-buttonVioletFocus;
+}

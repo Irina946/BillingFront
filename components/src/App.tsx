@@ -4,14 +4,22 @@ import { ButtonEmptyRed } from './components/button/buttonEmptyRed'
 import { ButtonEmptyViolet } from './components/button/buttonEmptyViolet'
 import { ButtonExit } from './components/button/buttonExit'
 import { ButtonViolet } from './components/button/buttonViolet'
+import { CardBalance } from './components/card/cardBalance'
 import { CardTarifCategory } from './components/card/cardTarifCategory'
 import { Logo } from './components/logo/logo'
 
 function App() {
 
   return (
-    <div className='grid gap-8 grid-cols-1 text-start'>
-
+    <div className='grid gap-8 grid-cols-1 text-start ml-[38%] mt-[50px] custom-scrollbar'>
+      {/* <div>
+        <p className='text-2xl text-left mb-[30px]'>Input</p>
+        <Input
+          type='text'
+          placeholder='Placeholder' 
+          id='id'
+        />
+      </div> */}
       <div>
         <p className='text-2xl text-left'>Большая фиолетовая кнопка</p>
         <ButtonBigViolet
@@ -52,6 +60,15 @@ function App() {
       <div>
         <p className='text-2xl text-left'>Логотип</p>
         <Logo size={80}/>
+      </div>
+      <div>
+        <p className='text-2xl text-left'>Карточка баланса</p>
+        <CardBalance
+          user='operator' 
+          balance={1005.56}
+          payment={200}
+          date='29.11.2024'
+          />
       </div>
     </div>
 

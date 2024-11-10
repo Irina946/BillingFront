@@ -5,9 +5,12 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     placeholder: string
     id: string,
     register?: any,
+    value?: string,
+    message?: string,
+    requiredMessage?: string
 }
 
-export const Input: React.FC<InputProps> = ({ type, placeholder, id, register, ...rest }): JSX.Element => {
+export const Input: React.FC<InputProps> = ({ type, placeholder, id, register, value, message, requiredMessage, ...rest }): JSX.Element => {
     return (
         <div className="relative mb-6">
             <input
@@ -35,7 +38,13 @@ export const Input: React.FC<InputProps> = ({ type, placeholder, id, register, .
                     peer
                     "
                 required
-                {...register(id)}
+                {...register(id, {
+                    required: requiredMessage,
+                    pattern: {
+                        value: value,
+                        message: message,
+                    }
+                })}
                 {...rest}
             />
             <label
