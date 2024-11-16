@@ -26,7 +26,7 @@ export const Input: React.FC<InputProps> = ({ type, placeholder, id, register, v
                     p-[16px]
                     w-[325px] 
                     h-[50px]
-                    font-Styreneb-Bold
+                    font-sans
                     font-bold
                     text-blackGray
                     text-lg
@@ -54,7 +54,7 @@ export const Input: React.FC<InputProps> = ({ type, placeholder, id, register, v
                 left-4
                 -top-1.5
                 text-gray
-                font-Styreneb-Bold
+                font-sans
                 font-medium
                 text-lg
                 transition-all

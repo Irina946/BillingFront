@@ -15,7 +15,7 @@ export const ButtonEmptyRed = (props: ButtonEmptyRedProps): JSX.Element => {
             w-[120px]
             h-[40px]
             rounded-[10px]
-            font-Styreneb-Bold
+            font-sans
             text-[16px]
             text-center
             font-bold

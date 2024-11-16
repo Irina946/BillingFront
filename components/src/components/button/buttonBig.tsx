@@ -1,6 +1,7 @@
 interface ButtonBigVioletProps {
     title: string,
-    type?: "submit" | "reset" | "button"
+    type?: "submit" | "reset" | "button",
+    onClick?: () => void
 }
 
 
@@ -13,6 +14,7 @@ export const ButtonBigViolet = (props: ButtonBigVioletProps): JSX.Element => {
             w-[325px]
             h-[50px]
             rounded-[10px]
+            font-sans
             font-bold
             text-lg
             align-middle
@@ -21,6 +23,7 @@ export const ButtonBigViolet = (props: ButtonBigVioletProps): JSX.Element => {
             active:bg-violet
         "
         type={props.type}
+        onClick={props.onClick}
         >
             {props.title}
         </button>

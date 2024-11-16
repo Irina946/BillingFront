@@ -5,12 +5,16 @@ import { ButtonEmptyViolet } from './components/button/buttonEmptyViolet'
 import { ButtonExit } from './components/button/buttonExit'
 import { ButtonViolet } from './components/button/buttonViolet'
 import { CardBalance } from './components/card/cardBalance'
-import { CardTarifCategory } from './components/card/cardTarifCategory'
+import { CardServicesCategory } from './components/card/cardServicesCategory'
+import { CardTariffs } from './components/card/cardTariffs'
+import { InputSearch } from './components/input/inputSearch'
 import { Logo } from './components/logo/logo'
 
 function App() {
 
   return (
+
+
     <div className='grid gap-8 grid-cols-1 text-start ml-[38%] mt-[50px] custom-scrollbar'>
       {/* <div>
         <p className='text-2xl text-left mb-[30px]'>Input</p>
@@ -52,24 +56,41 @@ function App() {
       </div>
       <div>
         <p className='text-2xl text-left'>Карточка категории тарифа</p>
-        <CardTarifCategory
+        <CardServicesCategory
           title='Интернет'
           count='12'
         />
       </div>
       <div>
         <p className='text-2xl text-left'>Логотип</p>
-        <Logo size={80}/>
+        <Logo size={80} />
       </div>
       <div>
         <p className='text-2xl text-left'>Карточка баланса</p>
         <CardBalance
-          user='operator' 
+          user='operator'
           balance={1005.56}
           payment={200}
           date='29.11.2024'
-          />
+          onClick={() => { }}
+        />
       </div>
+
+      <div>
+        <p className='text-2xl text-left'>Input</p>
+        <InputSearch
+          id="1"
+        />
+      </div>
+      <div>
+        <p className='text-2xl text-left'>Карточка тарифа</p>
+        <CardTariffs
+          title='МегаТариф+'
+          description='Описание  тарифа. Тариф самый лучший. Можно с ним сделать всё'
+          price={100}
+        />
+      </div>
+
     </div>
 
   )

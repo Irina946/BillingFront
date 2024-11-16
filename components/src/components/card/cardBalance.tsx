@@ -6,7 +6,8 @@ interface cardBalanceProps {
     user: "operator" | "client",
     balance: number,
     payment: number,
-    date: string
+    date: string,
+    onClick: () => void
 
 }
 
@@ -15,12 +16,12 @@ export const CardBalance = (props: cardBalanceProps): JSX.Element => {
     const buttonHidden = props.user === "operator" ? "hidden" : ""
     return (
         <div className={stylesCard}>
-            <div className="font-Styreneb-Bold font-bold text-4xl leading-9 mb-[5px]">
+            <div className="font-sans font-bold text-4xl leading-9 mb-[5px]">
                 Баланс
             </div>
-            <div className="font-Styreneb-Bold font-bold mb-[5px]">{props.balance} ₽</div>
+            <div className="font-sans font-bold mb-[5px]">{props.balance} ₽</div>
             <div className="
-            font-Styreneb-Medium 
+            font-sans
             font-medium 
             text-xl 
             text-blackGray
@@ -35,6 +36,8 @@ export const CardBalance = (props: cardBalanceProps): JSX.Element => {
             </div>
             <div className={`flex justify-center ${buttonHidden}`}><ButtonBigViolet
                 title="Пополнить"
+                type="button"
+                onClick={props.onClick}
             /></div>
             
         </div>
