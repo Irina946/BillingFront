@@ -13,7 +13,7 @@ export const ButtonBigRed = (props: ButtonBigRedProps): JSX.Element => {
             w-[325px]
             h-[50px]
             rounded-[10px]
-            font-Styreneb-Bold
+            font-sans
             font-bold
             text-lg
             align-middle

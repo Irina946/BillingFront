@@ -19,9 +19,12 @@ export default defineConfig({
         "./ButtonEmptyViolet": "src/components/button/buttonEmptyViolet.tsx",
         "./ButtonViolet": "src/components/button/buttonViolet.tsx",
         "./ButtonExit": "src/components/button/buttonExit.tsx",
-        "./cardTarifCategory": "src/components/card/cardTarifCategory.tsx",
         "./Logo": "src/components/logo/logo.tsx",
         "./CardBalance": "src/components/card/cardBalance.tsx",
+        "./InputModal": "src/components/input/inputModal.tsx",
+        "./InputSearch": "src/components/input/inputSearch.tsx",
+        "./CardServicesCategory": "src/components/card/cardServicesCategory.tsx",
+        "./CardTariffs": "src/components/card/cardTariffs.tsx",
       },
       shared: ["react", "react-dom"]
     })

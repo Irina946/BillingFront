@@ -1,0 +1,25 @@
+.header {
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
+}
+
+.navigatiLink {
+    @apply relative inline-block
+}
+
+.navigatiLink::after {
+    content: "";
+    @apply absolute left-0 bottom-0 h-[3px] w-full bg-buttonVioletFocus;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    transform-origin: left;
+}
+
+.navigatiLink:hover::after {
+    transform: scaleX(1);
+
+}
+
+.activeLink::after {
+    transform: scaleX(1);
+    @apply bg-violet;
+}

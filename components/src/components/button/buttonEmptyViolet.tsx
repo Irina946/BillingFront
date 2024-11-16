@@ -1,6 +1,7 @@
 interface ButtonEmptyVioletProps {
     title: string,
-    type?: "submit" | "reset" | "button"
+    type?: "submit" | "reset" | "button",
+    onClick?: () => void
 }
 
 
@@ -15,7 +16,7 @@ export const ButtonEmptyViolet = (props: ButtonEmptyVioletProps): JSX.Element =>
             w-[150px]
             h-[50px]
             rounded-[10px]
-            font-Styreneb-Bold
+            font-sans
             font-bold
             text-lg
             align-middle
@@ -27,6 +28,7 @@ export const ButtonEmptyViolet = (props: ButtonEmptyVioletProps): JSX.Element =>
             active:border-buttonVioletFocus
         "
         type={props.type}
+        onClick={props.onClick}
         >
             {props.title}
         </button>

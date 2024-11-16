@@ -56,3 +56,15 @@
 .client {
     @apply w-[550px] h-[350px] py-[40px] px-[45px] text-6xl
 }
+
+/* карта тарифа */
+.font-sans {
+    font-family: sans-serif;
+  }
+
+
+.cardTarif {
+    @apply w-[400px] h-[400px] p-[45px] rounded-[30px] bg-white font-sans flex flex-col justify-between items-start;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+}
+

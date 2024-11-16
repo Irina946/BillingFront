@@ -13,7 +13,7 @@ export const ButtonViolet = (props: ButtonVioletProps): JSX.Element => {
             w-[150px]
             h-[50px]
             rounded-[10px]
-            font-Styreneb-Medium
+            font-sans
             text-lg
             align-middle
             focus:bg-buttonVioletFocus

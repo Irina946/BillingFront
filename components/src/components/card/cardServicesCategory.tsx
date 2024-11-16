@@ -8,20 +8,20 @@ interface CardTarifCategoryProps {
 
 
 
-export const CardTarifCategory = (props: CardTarifCategoryProps): JSX.Element => {
+export const CardServicesCategory = (props: CardTarifCategoryProps): JSX.Element => {
     return (
         <button animate-gradient="true" className={styles.animateGradient}
         >
             <div className={styles.innerContent}>
-                <p className='text-2xl text-black font-Styreneb-Bold font-bold'>{props.title}</p>
-                <div className='flex flex-row items-center justify-center w-auto'>
+                <p className='text-2xl text-black font-sans font-bold'>{props.title}</p>
+                <div className='flex flex-row items-center justify-center w-auto align-middle'>
                     <p className='
                 text-2xl 
                 text-blackGray 
-                font-Styreneb-Bold 
+                font-sans 
                 font-bold'>{props.count} </p>
                     <p className='
-                font-Styreneb-Medium 
+                font-sans 
                 font-medium 
                 text-2xl 
                 text-blackGray
