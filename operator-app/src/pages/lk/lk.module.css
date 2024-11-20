@@ -1,0 +1,40 @@
+.tableBg {
+    @apply rounded-[20px] bg-white w-full h-[60vh] border-[1px] border-violet min-h-[500px];
+    box-shadow: 0 0 20px rgba(0,0,0,0.25);
+}
+
+.customScrollbar {
+    height: calc(100vh - 95px);
+    overflow-y: auto; /* Разрешаем прокрутку */
+    overflow-x: hidden;
+}
+
+.modalBG {
+    @apply 
+    fixed
+    top-0
+    left-0
+    w-full
+    h-lvh
+    bg-[rgb(80,87,89,0.7)]
+    backdrop-blur-[2px]
+    flex
+    justify-center
+    items-center
+}
+
+.modal {
+    @apply w-[30vw] 
+    h-[80vh]
+    min-w-[500px]
+    min-h-[650px]
+    bg-white
+    flex
+    flex-col 
+    justify-between  
+    items-center
+    py-[60px]
+    px-[45px] 
+    font-bold
+    relative
+}

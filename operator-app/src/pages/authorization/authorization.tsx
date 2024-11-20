@@ -3,6 +3,7 @@ import { ButtonBigViolet } from "components/ButtonBig";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { login } from "../../auth/auth";
+import { Logo } from "components/Logo";
 
 interface IForm {
     email: string,
@@ -27,23 +28,31 @@ export const Authorization = (): JSX.Element => {
     }
 
     return (
-        <form onSubmit={handleSubmit(handleLogin)}>
-            <Input
-                type="email"
-                id="email"
-                placeholder="Введите email"
-                register={register}
-            />
-            <Input
-                type="password"
-                id="password"
-                placeholder="Введите пароль"
-                register={register}
-            />
-            <ButtonBigViolet
-                title="Войти"
-                type="submit"
-            />
-        </form>
+        <div className="flex flex-col items-center justify-center h-screen relative">
+            <div className="absolute top-[20px] left-[20px]">
+                <Logo size={125} />
+            </div>
+            <div className="fons-sans font-bold text-3xl mb-[30px]">
+                Войдите в личный кабинет
+            </div>
+            <form onSubmit={handleSubmit(handleLogin)}>
+                <Input
+                    type="email"
+                    id="email"
+                    placeholder="Введите email"
+                    register={register}
+                />
+                <Input
+                    type="password"
+                    id="password"
+                    placeholder="Введите пароль"
+                    register={register}
+                />
+                <ButtonBigViolet
+                    title="Войти"
+                    type="submit"
+                />
+            </form>
+        </div>
     )
 }

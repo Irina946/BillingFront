@@ -5,13 +5,13 @@ interface InputModalProps extends React.InputHTMLAttributes<HTMLInputElement> {
     placeholder: string
     id: string,
     title: string
-    register?: any,
-    value?: string,
-    message?: string,
-    requiredMessage?: string
+    // register?: any,
+    // value?: string,
+    // message?: string,
+    // requiredMessage?: string
 }
 
-export const InputModal: React.FC<InputModalProps> = ({ type, placeholder, id, title, register, value, message, requiredMessage, ...rest }): JSX.Element => {
+export const InputModal: React.FC<InputModalProps> = ({ type, placeholder, id, title, ...rest }): JSX.Element => {
     return (
         <div className="relative mb-6 font-sans">
             <label
@@ -45,13 +45,13 @@ export const InputModal: React.FC<InputModalProps> = ({ type, placeholder, id, t
                     placeholder:font-normal
                     "
                     required
-                {...register(id, {
-                    required: requiredMessage,
-                    pattern: {
-                        value: value,
-                        message: message,
-                    }
-                })}
+                // {...register(id, {
+                //     required: requiredMessage,
+                //     pattern: {
+                //         value: value,
+                //         message: message,
+                //     }
+                // })}
                 {...rest}
                 />
             </label>

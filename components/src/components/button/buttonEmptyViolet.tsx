@@ -1,32 +1,18 @@
+import styles from './button.module.css'
+
 interface ButtonEmptyVioletProps {
     title: string,
     type?: "submit" | "reset" | "button",
-    onClick?: () => void
+    onClick?: () => void,
+    size?: 'small'
 }
 
 
 export const ButtonEmptyViolet = (props: ButtonEmptyVioletProps): JSX.Element => {
+    const typeSize = props.size === 'small' ? styles.buttonSmall : styles.buttonMiddle
     return (
         <button
-        className="
-            bg-white
-            text-violet
-            border-violet
-            border-[4px]
-            w-[150px]
-            h-[50px]
-            rounded-[10px]
-            font-sans
-            font-bold
-            text-lg
-            align-middle
-            focus:bg-violet
-            focus:text-white
-            hover:bg-violet
-            hover:text-white
-            active:bg-buttonVioletFocus
-            active:border-buttonVioletFocus
-        "
+        className={`${styles.buttonEmptyViolet} ${typeSize}`}
         type={props.type}
         onClick={props.onClick}
         >
