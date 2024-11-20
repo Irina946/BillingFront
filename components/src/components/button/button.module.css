@@ -1,3 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .font-sans {
+        font-family: sans-serif;
+    }
+}
+
 .buttonBig {
     @apply w-[325px]
     h-[50px]
@@ -13,7 +23,9 @@
     @apply bg-violet
     focus:bg-buttonVioletFocus
     hover:bg-buttonVioletFocus
-    active:bg-violet;
+    active:bg-violet
+    disabled:bg-gray;
+
 }
 
 .buttonBigRed {
@@ -21,6 +33,7 @@
     focus:bg-buttonRedFocus
     hover:bg-buttonRedFocus
     active:bg-red
+    disabled:bg-gray;
     
 }
 
@@ -38,7 +51,8 @@
     text-white
     focus:bg-buttonVioletFocus
     hover:bg-buttonVioletFocus
-    active:bg-violet;
+    active:bg-violet
+    disabled:bg-gray;
 }
 
 .buttonEmptyViolet {
@@ -52,7 +66,11 @@
     hover:bg-violet
     hover:text-white
     active:bg-buttonVioletFocus
-    active:border-buttonVioletFocus;
+    active:border-buttonVioletFocus
+    disabled:bg-white
+    disabled:text-gray
+    disabled:border-gray;
+
 }
 
 .buttonEmptyRed {
@@ -67,6 +85,9 @@
     hover:text-white
     active:bg-buttonRedFocus
     active:border-buttonRedFocus
+    disabled:bg-white
+    disabled:text-gray
+    disabled:border-gray;
 }
 
 .buttonSmall {

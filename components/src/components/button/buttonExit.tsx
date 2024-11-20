@@ -18,7 +18,9 @@ export const ButtonExit = (props: ButtonExitProps): JSX.Element => {
             stroke-red
             hover:stroke-buttonRedFocus 
             focus:stroke-buttonRedFocus 
-            active:stroke-red' />
+            active:stroke-red
+            disabled:stroke-gray
+            ' />
         </button>
     )
 }
