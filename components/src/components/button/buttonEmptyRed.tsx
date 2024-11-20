@@ -1,32 +1,22 @@
+import styles from './button.module.css'
+
 interface ButtonEmptyRedProps {
     title: string,
-    type?: "submit" | "reset" | "button"
+    type?: "submit" | "reset" | "button",
+    size?: 'small',
+    onClick?: () => void
 }
 
 
 export const ButtonEmptyRed = (props: ButtonEmptyRedProps): JSX.Element => {
+    const typeSize = props.size === 'small' ? styles.buttonSmall : styles.buttonMiddle
     return (
         <button
-        className="
-            bg-white
-            text-red
-            border-red
-            border-[4px]
-            w-[120px]
-            h-[40px]
-            rounded-[10px]
-            font-sans
-            text-[16px]
-            text-center
-            font-bold
-            focus:bg-red
-            focus:text-white
-            hover:bg-red
-            hover:text-white
-            active:bg-buttonRedFocus
-            active:border-buttonRedFocus
-        "
-        type={props.type}
+            className={`
+            ${styles.buttonEmptyRed}
+            ${typeSize}
+        `}
+            type={props.type}
         >
             {props.title}
         </button>

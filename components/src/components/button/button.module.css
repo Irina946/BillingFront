@@ -1,0 +1,79 @@
+.buttonBig {
+    @apply w-[325px]
+    h-[50px]
+    rounded-[10px]
+    font-sans
+    font-bold
+    text-lg
+    align-middle
+    text-white
+}
+
+.buttonBigViolet {
+    @apply bg-violet
+    focus:bg-buttonVioletFocus
+    hover:bg-buttonVioletFocus
+    active:bg-violet;
+}
+
+.buttonBigRed {
+    @apply bg-red
+    focus:bg-buttonRedFocus
+    hover:bg-buttonRedFocus
+    active:bg-red
+    
+}
+
+.buttonMiddle {
+    @apply w-[150px]
+    h-[50px]
+    rounded-[10px]
+    font-sans
+    text-lg
+    align-middle;
+}
+
+.buttonViolet {
+    @apply bg-violet
+    text-white
+    focus:bg-buttonVioletFocus
+    hover:bg-buttonVioletFocus
+    active:bg-violet;
+}
+
+.buttonEmptyViolet {
+    @apply bg-white
+    font-bold
+    text-violet
+    border-violet
+    border-[4px]
+    focus:bg-violet
+    focus:text-white
+    hover:bg-violet
+    hover:text-white
+    active:bg-buttonVioletFocus
+    active:border-buttonVioletFocus;
+}
+
+.buttonEmptyRed {
+    @apply bg-white
+    text-red
+    border-red
+    border-[4px]
+    font-bold
+    focus:bg-red
+    focus:text-white
+    hover:bg-red
+    hover:text-white
+    active:bg-buttonRedFocus
+    active:border-buttonRedFocus
+}
+
+.buttonSmall {
+    @apply w-[120px]
+    h-[40px]
+    rounded-[10px]
+    font-sans
+    text-lg
+    align-middle;
+}

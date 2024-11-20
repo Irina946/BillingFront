@@ -48,6 +48,7 @@ function App() {
       <div>
         <p className='text-2xl text-left'>Пустая красная кнопка</p>
         <ButtonEmptyRed
+          size='small'
           title='Отмена'
         /></div>
       <div>

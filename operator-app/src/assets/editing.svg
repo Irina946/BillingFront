@@ -1,0 +1,12 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="11" stroke="black" stroke-width="2"/>
+<g clip-path="url(#clip0_280_364)">
+<path d="M10.25 13.1874V14.7499H11.8125L16.4229 10.1395L14.8604 8.57702L10.25 13.1874ZM17.6271 8.93535C17.7896 8.77285 17.7896 8.50827 17.6271 8.34577L16.6542 7.37285C16.4917 7.21035 16.2271 7.21035 16.0646 7.37285L15.3021 8.13535L16.8646 9.69785L17.6271 8.93535Z" fill="black"/>
+</g>
+<line x1="6" y1="17" x2="18" y2="17" stroke="black" stroke-width="2"/>
+<defs>
+<clipPath id="clip0_280_364">
+<rect width="10" height="10" fill="white" transform="translate(9 6)"/>
+</clipPath>
+</defs>
+</svg>

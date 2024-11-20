@@ -1,3 +1,5 @@
+import styles from './button.module.css'
+
 interface ButtonVioletProps {
     title: string,
     type?: "submit" | "reset" | "button"
@@ -7,19 +9,7 @@ interface ButtonVioletProps {
 export const ButtonViolet = (props: ButtonVioletProps): JSX.Element => {
     return (
         <button
-        className="
-            bg-violet
-            text-white
-            w-[150px]
-            h-[50px]
-            rounded-[10px]
-            font-sans
-            text-lg
-            align-middle
-            focus:bg-buttonVioletFocus
-            hover:bg-buttonVioletFocus
-            active:bg-violet
-        "
+        className={`${styles.buttonViolet} ${styles.buttonMiddle}`}
         type={props.type}
         >
             {props.title}

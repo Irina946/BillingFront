@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .font-sans {
+        font-family: sans-serif; /* Укажите нужный шрифт */
+    }
+}
+
+.search {
+    @apply mt-[10px]
+    block
+    border-blackGray 
+    border-[2px] 
+    rounded-[8px] 
+    text-lg
+    align-middle
+    leading-[50px]
+    p-[16px]
+    w-[450px] 
+    h-[50px]
+    font-sans
+    font-bold
+    text-blackGray
+    placeholder:font-normal;
+    background-image: url('../../assets/search.svg');
+    background-repeat: no-repeat;
+    background-position: 96% 50%;
+}

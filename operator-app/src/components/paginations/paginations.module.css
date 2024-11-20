@@ -1,0 +1,29 @@
+.modalBG {
+    @apply 
+    fixed
+    top-0
+    left-0
+    w-full
+    h-lvh
+    bg-[rgb(80,87,89,0.7)]
+    backdrop-blur-[2px]
+    flex
+    justify-center
+    items-center
+}
+
+.modal {
+    @apply w-[520px] 
+    h-[650px]
+    bg-white
+    flex
+    flex-col 
+    justify-between  
+    items-center
+    pb-[30px]
+    pt-[45px]
+    px-[30px] 
+    font-bold
+    relative
+    text-3xl
+}
