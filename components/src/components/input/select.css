@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .font-sans {
+        font-family: sans-serif;
+    }
+}
+
+.react-select {
+    @apply w-[400px] h-[50px] font-sans text-lg;
+}
+
+.react-select
+    .react-select__control {
+        @apply min-h-[50px] border-blackGray border-[2px] rounded-[8px];
+        box-shadow: 0 0 0 0;
+}
+
+.react-select
+    .react-select__control:hover {
+        @apply border-[4px] border-blackGray;
+}
+
+.react-select
+    .react-select__control--is-focused.react-select__control--menu-is-open {
+        border-color: rgba(103, 39, 204, 1);
+        box-shadow: 0 0 0 0;
+}
+
+
+.react-select
+    .react-select__control--hover {
+        border-color: rgba(103, 39, 204, 1);
+}
+
+
+.react-select
+    .react-select__menu {
+        border: none;
+        margin-top: 0;
+}
+
+.react-select
+    .react-select__option--is-focused {
+        background-color: rgba(103, 39, 204, 0.1);
+        color: rgba(103, 39, 204, 0.8);
+}
+
+.react-select
+    .react-select__option--is-selected {
+        background-color: rgba(103, 39, 204, 1);
+        color: white;
+        font-weight: bold;
+}
+
+.react-select
+    .react-select__option:active {
+        background-color: rgba(103, 39, 204, 0.5);
+        color: rgba(103, 39, 204, 0.8);
+}

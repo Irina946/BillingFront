@@ -4,7 +4,8 @@ interface ButtonEmptyVioletProps {
     title: string,
     type?: "submit" | "reset" | "button",
     onClick?: () => void,
-    size?: 'small'
+    size?: 'small',
+    disabled?: boolean
 }
 
 
@@ -15,6 +16,7 @@ export const ButtonEmptyViolet = (props: ButtonEmptyVioletProps): JSX.Element =>
         className={`${styles.buttonEmptyViolet} ${typeSize}`}
         type={props.type}
         onClick={props.onClick}
+        disabled={props.disabled}
         >
             {props.title}
         </button>

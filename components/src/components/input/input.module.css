@@ -4,27 +4,101 @@
 
 @layer components {
     .font-sans {
-        font-family: sans-serif; /* Укажите нужный шрифт */
+        font-family: sans-serif;
+    }
+
+    .placeholder-transparent::placeholder {
+        color: transparent;
     }
 }
 
+
+/* Input входа */
+
+.inputEntry {
+    @apply mb-[10px] block border-blackGray border-[2px] rounded-[8px] p-[16px] w-[325px] h-[50px] font-sans font-bold text-blackGray text-lg focus:border-[4px] hover:border-[4px] active:border-[4px] placeholder:text-gray placeholder-transparent
+}
+
+.labelEntry {
+    @apply absolute left-4 -top-1.5 text-gray font-sans font-medium text-lg transition-all duration-200 transform -translate-y-6 peer-placeholder-shown:top-9 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray peer-focus:-translate-y-8 peer-focus:text-blackGray peer-focus:top-0
+}
+
+
+/* Input поиска */
 .search {
-    @apply mt-[10px]
-    block
-    border-blackGray 
-    border-[2px] 
-    rounded-[8px] 
-    text-lg
-    align-middle
-    leading-[50px]
-    p-[16px]
-    w-[450px] 
-    h-[50px]
-    font-sans
-    font-bold
-    text-blackGray
-    placeholder:font-normal;
+    @apply mt-[10px] 
+        block 
+        border-blackGray 
+        border-[2px] 
+        rounded-[8px] 
+        text-lg 
+        align-middle 
+        leading-[50px] 
+        p-[16px] 
+        w-[450px] 
+        h-[50px] 
+        font-sans 
+        font-bold 
+        text-blackGray 
+        placeholder:font-normal
+        focus:border-[4px] 
+        hover:border-[4px] 
+        active:border-[4px];
     background-image: url('../../assets/search.svg');
     background-repeat: no-repeat;
     background-position: 96% 50%;
+}
+
+/* Input модального окна */
+
+.inputModal {
+    @apply my-[10px] 
+        block 
+        border-blackGray 
+        border-[2px] 
+        rounded-[8px] 
+        p-[16px] 
+        w-[400px] 
+        h-[50px] 
+        font-medium 
+        text-blackGray 
+        text-lg 
+        focus:border-[4px] 
+        hover:border-[4px] 
+        active:border-[4px] 
+        placeholder:text-gray 
+        placeholder:font-normal
+}
+
+.labelModal {
+    @apply text-blackGray font-normal text-xl
+}
+
+/* Input даты */
+.InputDate {
+    @apply mt-[10px] 
+        block 
+        border-blackGray 
+        border-[2px] 
+        rounded-[8px] 
+        text-lg 
+        align-middle 
+        leading-[50px] 
+        p-[10px] 
+        w-[220px] 
+        h-[50px] 
+        font-sans 
+        font-bold 
+        text-blackGray 
+        placeholder:font-normal
+        placeholder:text-gray
+        focus:border-[4px] 
+        hover:border-[4px] 
+        active:border-[4px] ;
+}
+
+::-webkit-calendar-picker-indicator {
+    background-image: url('../../assets/calendar.svg');
+    background-position: 50% 50%;
+    background-size: 24px 25px;
 }

@@ -37,33 +37,9 @@ export const CardTariffs = (props: CardTariffProps): JSX.Element => {
                 />
             </div>
             {isOpenModal &&
-                <div className='
-                    fixed
-                    top-0
-                    left-0
-                    w-full
-                    h-lvh
-                    bg-[rgb(80,87,89,0.7)]
-                    backdrop-blur-[2px]
-                    flex
-                    justify-center
-                    items-center'
+                <div className={styles.modalBG}
                     onClick={() => setIsOpenModal(false)}>
-                    <div className='
-                        w-[35vw] 
-                        h-[80vh]
-                        min-w-[500px]
-                        min-h-[640px]
-                        bg-white
-                        flex
-                        flex-col 
-                        justify-between 
-                        items-start 
-                        py-[45px]
-                        px-[30px] 
-                        font-bold
-                        relative
-                        '>
+                    <div className={styles.modal}>
                         <div className="absolute top-5 right-5">
                             <ButtonExit onClick={() => setIsOpenModal(false)} />
                         </div>
@@ -73,18 +49,7 @@ export const CardTariffs = (props: CardTariffProps): JSX.Element => {
                         <div className='text-xl font-medium text-blackGray'>
                             {props.description}
                         </div>
-                        <div className="
-                        place-self-start
-                        text-blackGray 
-                        font-medium 
-                        text-xl 
-                        border-y-[3px] 
-                        border-gray 
-                        w-[calc(35vw-20px)] 
-                        min-w-[480px] 
-                        py-[15px] 
-                        -ml-[20px] 
-                        px-[20px]">
+                        <div className={styles.modalInner}>
                             Абонентская плата
                             <p className="pt-[15px] text-6xl font-bold text-black">{props.price} ₽ <span className="text-4xl font-medium">в месяц</span></p>
                         </div>

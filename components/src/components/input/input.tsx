@@ -1,4 +1,5 @@
 import React from "react";
+import styles from './input.module.css'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     type: string
@@ -17,26 +18,7 @@ export const Input: React.FC<InputProps> = ({ type, placeholder, id, register, v
                 id={id}
                 type={type}
                 placeholder=""
-                className="
-                    mb-[10px]
-                    block
-                    border-blackGray 
-                    border-[2px] 
-                    rounded-[8px] 
-                    p-[16px]
-                    w-[325px] 
-                    h-[50px]
-                    font-sans
-                    font-bold
-                    text-blackGray
-                    text-lg
-                    focus:border-[4px]
-                    hover:border-[4px]
-                    active:border-[4px]
-                    placeholder:text-gray
-                    placeholder-transparent
-                    peer
-                    "
+                className={`${styles.inputEntry} peer`}
                 required
                 {...register(id, {
                     required: requiredMessage,
@@ -49,25 +31,7 @@ export const Input: React.FC<InputProps> = ({ type, placeholder, id, register, v
             />
             <label
                 htmlFor={id}
-                className="
-                absolute
-                left-4
-                -top-1.5
-                text-gray
-                font-sans
-                font-medium
-                text-lg
-                transition-all
-                duration-200
-                transform
-                -translate-y-6
-                peer-placeholder-shown:top-9
-                peer-placeholder-shown:left-4
-                peer-placeholder-shown:text-gray
-                peer-focus:-translate-y-8
-                peer-focus:text-blackGray
-                peer-focus:top-0
-                "
+                className={styles.labelEntry}
             >{placeholder}</label>
         </div>
 

@@ -14,7 +14,7 @@ export const CardServicesCategory = (props: CardTarifCategoryProps): JSX.Element
         >
             <div className={styles.innerContent}>
                 <p className='text-2xl text-black font-sans font-bold'>{props.title}</p>
-                <div className='flex flex-row items-center justify-center w-auto align-middle'>
+                <div className='flex flex-row items-center justify-start align-middle w-[140px] ml-[12px]'>
                     <p className='
                 text-2xl 
                 text-blackGray 
@@ -27,7 +27,7 @@ export const CardServicesCategory = (props: CardTarifCategoryProps): JSX.Element
                 text-blackGray
                 pl-[8px]
                 '>услуг</p>
-                    <Arrow className='pl-[8px] w-[20px] h-[20px]'/>
+                    <Arrow className={`pl-[8px] w-[20px] h-[20px] ${styles.rotateArrow}`}/>
                 </div>
 
             </div>
