@@ -39,7 +39,6 @@
 
 .innerContent {
     @apply relative p-[18px] bg-white rounded-[10px] flex flex-col justify-between items-center w-full h-full;
-    z-index: 1;
   }
 
 
