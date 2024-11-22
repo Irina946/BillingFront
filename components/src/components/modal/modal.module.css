@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .font-sans {
+        font-family: sans-serif;
+    }
+}
+
+.modalBG {
+    @apply fixed
+    top-0
+    left-0
+    w-full
+    h-lvh
+    bg-[rgb(80,87,89,0.7)]
+    backdrop-blur-[2px]
+    flex
+    justify-center
+    items-center
+    z-[1]
+    ;
+}
+
+.modal {
+    @apply w-[500px]
+    bg-white
+    flex
+    flex-col 
+    justify-between 
+    items-start 
+    py-[45px]
+    px-[30px]
+    font-sans 
+    font-bold
+    relative;
+}
+
+.modalReport {
+    @apply w-[550px]
+    h-[315px]
+    p-[30px]
+}
+
+.modalInner {
+    @apply place-self-start
+    text-blackGray 
+    font-medium 
+    text-xl 
+    border-y-[3px] 
+    border-gray 
+    w-[480px] 
+    py-[10px] 
+    -ml-[20px] 
+    px-[20px]
+}
+
+.modalAlert {
+    @apply absolute
+    top-0
+    left-[calc(50%-175px)]
+    bg-white
+    h-[200px]
+    w-[350px]
+    p-[30px]
+    border-violet
+    border-[1px]
+}

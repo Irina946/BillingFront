@@ -12,6 +12,9 @@ import { InputSearch } from './components/input/inputSearch'
 import { OptionTarif, SelectInput } from './components/input/select'
 import { Logo } from './components/logo/logo'
 import { InputDate } from './components/input/inputDate'
+import { ModalTarif } from './components/modal/modalTarif'
+import { ModalService } from './components/modal/modalService'
+import { ModalReport } from './components/modal/modalReport'
 
 function App() {
   const tarifs = [
@@ -239,10 +242,38 @@ function App() {
 
   const [selectedTariff, setSelectedTariff] = useState<OptionTarif | null>(null);
 
+  const [openModal1, setOpenModal1] = useState(false);
+  const [openModalService, setOpenModalService] = useState(false);
+  const [openModalReport, setOpenModalReport] = useState(false);
+
+  const handleOpenModal1 = () => {
+    setOpenModal1(true);
+  };
+
+  const handleCloseModal1 = () => {
+    setOpenModal1(false);
+  };
+
+  const handleOpenModalservice = () => {
+    setOpenModalService(true);
+  };
+
+  const handleCloseModalService = () => {
+    setOpenModalService(false);
+  };
+
+  const handleOpenModalReport = () => {
+    setOpenModalReport(true);
+  };
+
+  const handleCloseModalReport = () => {
+    setOpenModalReport(false);
+  };
+
   return (
 
     <>
-      
+
       <div className='grid gap-8 grid-cols-1 text-start ml-[38%] mt-[50px] custom-scrollbar'>
         {/* <div>
         <p className='text-2xl text-left mb-[30px]'>Input</p>
@@ -252,26 +283,37 @@ function App() {
           id='id'
         />
       </div> */}
-      <div>
-        <p className='text-2xl text-left'>Select</p>
-        <InputDate 
-          id="date"
-          label='Начало'
-        />
-      </div>
-      <div>
-        <p className='text-2xl text-left'>Select</p>
-        <SelectInput
-          options={tarifs}
-          defaultOption={selectedTariff}
-          onChange={setSelectedTariff}
-        />
-      </div>
+        <div>
+          <p className='text-2xl text-left'>Select</p>
+          <InputDate
+            id="date"
+            label='Начало'
+          />
+        </div>
+        <div>
+          <p className='text-2xl text-left'>Select</p>
+          <SelectInput
+            options={tarifs}
+            defaultOption={selectedTariff}
+            onChange={setSelectedTariff}
+          />
+        </div>
         <div>
           <p className='text-2xl text-left'>Большая фиолетовая кнопка</p>
           <ButtonBigViolet
-            title='Войти'
+            title='Открыть Modal Tarif'
+            onClick={handleOpenModal1}
           />
+          {openModal1 && <ModalTarif
+            title='Модальное окно'
+            description='Это идеальное решение для тех, кто ищет простоту и свободу в использовании мобильных услуг. Все, что вам нужно для подключения — это ноль затрат на оформление и ноль обязательств'
+            price={0}
+            minute={0}
+            sms={0}
+            internet={0}
+            isConnect={false}
+            onClose={handleCloseModal1}
+          />}
         </div>
         <div>
           <p className='text-2xl text-left'>Фиолетовая кнопка</p>
@@ -286,14 +328,30 @@ function App() {
         <div>
           <p className='text-2xl text-left'>Большая красная кнопка</p>
           <ButtonBigRed
-            title='Войти'
-          /></div>
+            title='Открыть Modal Services'
+            onClick={handleOpenModalservice}
+          />
+          {openModalService && <ModalService
+            dateConnect='15.09.2023'
+            date='15.12.2024'
+            isConnect={false}
+            price={200}
+            writeOffPeriod='30 дней'
+            title='Интернет'
+            description="Идеальное решение для тех, кто ценит безграничные возможности общения и развлечений! "
+            onClose={handleCloseModalService}
+          />}
+        </div>
         <div>
           <p className='text-2xl text-left'>Пустая красная кнопка</p>
           <ButtonEmptyRed
             size='small'
-            title='Отмена'
-          /></div>
+            title='Отчет'
+            onClick={handleOpenModalReport}
+          />
+          {openModalReport && <ModalReport
+            onClose={handleCloseModalReport} />}
+        </div>
         <div>
           <p className='text-2xl text-left'>Кнопка выхода</p>
           <ButtonExit />
