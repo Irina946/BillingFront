@@ -10,6 +10,28 @@
     overflow-x: hidden;
 }
 
+.buttonTarif {
+    @apply font-bold 
+    text-3xl 
+    mb-[20px] 
+    pl-[15px]
+    pr-[30px]
+    bg-no-repeat;
+    background-image: url("../../assets/ArrowText.svg");
+    background-position: 95% center;
+    transition: background-position 0.3s ease-in-out;
+}
+
+.buttonTarif:hover,
+.buttonTarif:focus {
+    background-position: 100% center;
+}
+
+.buttonTarif:active {
+    background-position: 95% center;
+}
+
+
 .modalBG {
     @apply 
     fixed
@@ -36,4 +58,5 @@
     p-[30px] 
     font-bold
     relative
+    items-center
 }

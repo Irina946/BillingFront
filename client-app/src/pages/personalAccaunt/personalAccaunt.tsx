@@ -2,6 +2,7 @@ import { CardBalance } from "components/CardBalance";
 import { InputModal } from "components/InputModal";
 import { ButtonViolet } from "components/ButtonViolet";
 import { ButtonExit } from "components/ButtonExit";
+import { ModalTarif } from "components/ModalTarif";
 import styles from "./personalAccaunt.module.css"
 import { CardTarif } from "../../components/cardTarif/cardTarif";
 import { CardService } from "../../components/cardServices/cardService";
@@ -66,7 +67,7 @@ export const PersonalAccaunt = (): JSX.Element => {
             <div
                 className={`${styles.tarif}`}
             >
-                <button className="font-bold text-3xl mb-[20px] pl-[15px]" onClick={handleOpenModalFormTarif}>
+                <button className={styles.buttonTarif} onClick={handleOpenModalFormTarif}>
                     МегаТариф+
                 </button>
                 <div className="flex justify-start items-center h-[210px] gap-[4%]">
@@ -127,12 +128,10 @@ export const PersonalAccaunt = (): JSX.Element => {
                 <div className={styles.modalBG}
                     onClick={handleOutsideClick}>
                     <div
-                        className={`${styles.modal} items-center`}>
+                        className={styles.modal}>
                         <div className="absolute top-5 right-5">
                             <ButtonExit onClick={() => setIsOpenPayment(false)} />
-
                         </div>
-
                         <div className="text-3xl">
                             Пополнение баланса
                         </div>
@@ -173,29 +172,16 @@ export const PersonalAccaunt = (): JSX.Element => {
                     </div>
                 </div>
             }
-            {isOpenTarif && <div className={styles.modalBG} onClick={handleOutsideClick}>
-                <div className={`${styles.modal} items-start`}>
-                    <div className="absolute top-5 right-5">
-                        <ButtonExit onClick={() => setIsOpenTarif(false)} />
-                    </div>
-                    <div className="text-3xl pt-[15px]">
-                        Мегатариф+
-                    </div>
-                    <div className="text-lg text-blackGray">
-                        Идеальное решение для тех, кто ценит безграничные возможности общения и развлечений!
-                    </div>
-                    <div className="place-self-start text-gray font-medium text-lg border-y-[3px] border-gray w-[calc(30vw-20px)] py-[15px] -ml-[20px] px-[20px]">
-                        Абонентская плата
-                        <p className="pt-[15px] text-4xl font-bold text-black">200 ₽ <span className="text-3xl font-light">в месяц</span></p>
-                    </div>
-                    <div className="text-3xl font-bold">
-                        В тариф входит
-                    </div>
-                    <div className="text-3xl text-blackGray font-medium">300 минут</div>
-                    <div className="text-3xl text-blackGray font-medium">3000 ГБ</div>
-                    <div className="text-3xl text-blackGray font-medium pb-[15px]">100 СМС</div>
-                </div>
-            </div>}
+            {isOpenTarif && <ModalTarif
+                title="МегаТариф+"
+                description="Идеальное решение для тех, кто ценит безграничные возможности общения и развлечений!"
+                price={1000}
+                minute={300}
+                sms={300}
+                internet={300}
+                isConnect={true}
+                onClose={() => setIsOpenTarif(false)} />
+            }
         </div>
     )
 }

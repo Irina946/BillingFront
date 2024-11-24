@@ -1,0 +1,21 @@
+.container {
+    @apply bg-blue 
+    text-white
+    w-[30%] 
+    h-[95%]
+    p-[20px] 
+    rounded-[10px] 
+    font-sans
+    font-medium 
+    text-center
+    flex
+    flex-col
+    justify-between
+    items-center
+    gap-[10px]
+    shadow-[4px_4px_10px_rgba(0,0,0,0.25)]
+    mb-[10px]
+    hover:bg-[rgba(0,201,201)]
+    focus:bg-[rgba(0,201,201)]
+    active:bg-blue
+}

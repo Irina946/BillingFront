@@ -43,7 +43,7 @@ export const Authorization = (): JSX.Element => {
             <div className="font-Styreneb-Bold font-bold text-3xl mb-10">
                 Войдите в личный кабинет
             </div>
-            <form onSubmit={handleSubmit(handleLogin)} className="flex flex-col gap-[15px]">
+            <form onSubmit={handleSubmit(handleLogin)} className="flex flex-col gap-[10px]">
                 <Input
                     type="tel"
                     id="number"

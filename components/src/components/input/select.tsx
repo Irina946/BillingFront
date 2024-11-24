@@ -1,4 +1,4 @@
-import Select, { ActionMeta, SingleValue } from 'react-select'
+import Select, { SingleValue } from 'react-select'
 import './select.css'
 
 export interface OptionTarif {
@@ -27,7 +27,7 @@ export const SelectInput = (props: SelectInputProps): JSX.Element => {
         value: option.value,
     }));
 
-    const handleChange = (newValue: SingleValue<{ label: string; value: string }>, actionMeta: ActionMeta<{ label: string; value: string }>) => {
+    const handleChange = (newValue: SingleValue<{ label: string; value: string }>) => {
         if (newValue) {
             const selectedOption = props.options.find(option => option.value === newValue.value) || null;
             props.onChange(selectedOption);

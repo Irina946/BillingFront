@@ -16,11 +16,41 @@
 /* Input входа */
 
 .inputEntry {
-    @apply mb-[10px] block border-blackGray border-[2px] rounded-[8px] p-[16px] w-[325px] h-[50px] font-sans font-bold text-blackGray text-lg focus:border-[4px] hover:border-[4px] active:border-[4px] placeholder:text-gray placeholder-transparent
+    @apply mb-[10px] 
+    block 
+    border-blackGray 
+    border-[2px] 
+    rounded-[8px] 
+    p-[16px] 
+    w-[325px] 
+    h-[50px] 
+    font-sans 
+    font-bold
+    text-blackGray 
+    text-lg 
+    focus:border-[4px] 
+    hover:border-[4px] 
+    active:border-[4px] 
+    placeholder:text-gray 
+    placeholder-transparent
 }
 
 .labelEntry {
-    @apply absolute left-4 -top-1.5 text-gray font-sans font-medium text-lg transition-all duration-200 transform -translate-y-6 peer-placeholder-shown:top-9 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray peer-focus:-translate-y-8 peer-focus:text-blackGray peer-focus:top-0
+    @apply absolute 
+    left-4 
+    top-3.5 
+    text-gray 
+    font-sans 
+    font-medium 
+    text-lg;
+    transition: left 0.3s ease, top 0.3s ease, font-color 0.3s ease;
+}
+
+.inputEntry:focus + .labelEntry,
+.inputEntry:not(:placeholder-shown) + .labelEntry {
+    @apply text-black
+    left-1
+    -top-8
 }
 
 

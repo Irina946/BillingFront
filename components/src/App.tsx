@@ -15,6 +15,7 @@ import { InputDate } from './components/input/inputDate'
 import { ModalTarif } from './components/modal/modalTarif'
 import { ModalService } from './components/modal/modalService'
 import { ModalReport } from './components/modal/modalReport'
+import { Input } from './components/input/input'
 
 function App() {
   const tarifs = [
@@ -275,14 +276,14 @@ function App() {
     <>
 
       <div className='grid gap-8 grid-cols-1 text-start ml-[38%] mt-[50px] custom-scrollbar'>
-        {/* <div>
+        <div>
         <p className='text-2xl text-left mb-[30px]'>Input</p>
         <Input
           type='text'
           placeholder='Placeholder' 
           id='id'
         />
-      </div> */}
+      </div>
         <div>
           <p className='text-2xl text-left'>Select</p>
           <InputDate

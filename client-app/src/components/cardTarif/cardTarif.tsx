@@ -1,3 +1,5 @@
+import styles from "./cardTarif.module.css"
+
 interface CardTarifProps {
     name: string,
     remains: number
@@ -11,23 +13,7 @@ export const CardTarif = (props: CardTarifProps): JSX.Element => {
     };
     return (
         <div
-            className="
-        bg-violet 
-        w-[30%] 
-        h-[100%]
-        p-[20px] 
-        rounded-[10px] 
-        font-sans
-        font-medium 
-        text-center
-        flex
-        flex-col
-        justify-center
-        items-center
-        gap-[2rem]
-        mb-[20px]
-        shadow-[4px_4px_10px_rgba(0,0,0,0.25)]
-        "
+            className={styles.container}
         >
             <div
                 className="

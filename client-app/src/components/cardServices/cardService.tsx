@@ -1,3 +1,7 @@
+import { useState } from "react";
+import { ModalService } from "components/ModalService";
+import styles from "./cardServices.module.css";
+
 interface CardServiceProps {
     name: string,
     description: string,
@@ -5,26 +9,16 @@ interface CardServiceProps {
 }
 
 export const CardService = (props: CardServiceProps): JSX.Element => {
-    return (
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleOpenModal = (): void => setIsOpen(true);
+
+    const handleCloseModal = (): void => setIsOpen(false);
+
+    return (<>
         <button
-            className="
-        bg-blue 
-        text-white
-        w-[30%] 
-        h-[95%]
-        p-[20px] 
-        rounded-[10px] 
-        font-sans
-        font-medium 
-        text-center
-        flex
-        flex-col
-        justify-between
-        items-center
-        gap-[10px]
-        shadow-[4px_4px_10px_rgba(0,0,0,0.25)]
-        mb-[10px]
-        "
+            className={styles.container}
+            onClick={handleOpenModal}
         >
             <div className="text-xl">
                 {props.name}
@@ -36,5 +30,17 @@ export const CardService = (props: CardServiceProps): JSX.Element => {
                 {`${props.price} ₽`}
             </div>
         </button>
+        {isOpen && <ModalService
+            onClose={handleCloseModal}
+            title={props.name}
+            description={props.description}
+            price={props.price}
+            isConnect={true}
+            dateConnect={"01.01.2023"}
+            date={"01.12.2024"}
+            writeOffPeriod={"30 дней"}
+
+        />}
+    </>
     );
 }
