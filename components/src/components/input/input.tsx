@@ -11,7 +11,15 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     requiredMessage?: string
 }
 
-export const Input: React.FC<InputProps> = ({ type, placeholder, id, register, value, message, requiredMessage, ...rest }): JSX.Element => {
+export const Input: React.FC<InputProps> = (
+    { type,
+        placeholder,
+        id,
+        value,
+        register,
+        message,
+        requiredMessage,
+        ...rest }): JSX.Element => {
     return (
         <div className="relative mb-6">
             <input

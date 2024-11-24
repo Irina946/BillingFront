@@ -1,0 +1,9 @@
+.inside {
+    @apply grid py-[15px] border-b-[2px] border-gray font-sans font-normal text-2xl leading-6;
+    grid-template-columns: 48% auto;
+}
+
+.insideRight {
+    @apply grid;
+    grid-template-columns: 38% 27% 35%;
+}

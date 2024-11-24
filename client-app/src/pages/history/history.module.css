@@ -1,0 +1,33 @@
+.tableContainer {
+    @apply w-[90vw] h-[60vh] bg-white shadow-[0px_0px_20px_rgba(0,0,0,0.25)] rounded-[20px]
+}
+
+.tableHeader {
+    @apply w-full 
+    bg-violet 
+    font-bold 
+    text-2xl 
+    opacity-80 
+    rounded-t-[20px]
+    grid
+    pl-[60px]
+    pr-[90px]
+    py-[30px]
+    ;
+    grid-template-columns: 51% 49%;
+}
+
+.headerRight {
+    @apply grid;
+    grid-template-columns: 36% 38% 26%;
+}
+
+.tableBody {
+    @apply pl-[45px] pr-[15px] py-[30px];
+}
+
+.scrollBarTable {
+    @apply h-[calc(50vh-60px)] pr-[15px];
+    overflow-y: auto; /* Разрешаем прокрутку */
+    overflow-x: hidden;
+}
