@@ -3,14 +3,15 @@ import Arrow from '../../assets/arrowLeft.svg?react';
 
 interface CardTarifCategoryProps {
     title: string,
-    count: string
+    count: string,
+    onClick?: () => void
 }
 
 
 
 export const CardServicesCategory = (props: CardTarifCategoryProps): JSX.Element => {
     return (
-        <button animate-gradient="true" className={styles.animateGradient}
+        <button animate-gradient="true" className={styles.animateGradient} onClick={props.onClick}
         >
             <div className={styles.innerContent}>
                 <p className='text-2xl text-black font-sans font-bold'>{props.title}</p>

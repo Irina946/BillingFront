@@ -31,6 +31,7 @@ export default defineConfig({
         "./CardBalance": "src/components/card/cardBalance.tsx",
         "./CardServicesCategory": "src/components/card/cardServicesCategory.tsx",
         "./CardTariffs": "src/components/card/cardTariffs.tsx",
+        "./CardService": "src/components/card/cardService.tsx",
         // modal
         "./ModalService": "src/components/modal/modalService.tsx",
         "./ModalTarif": "src/components/modal/modalTarif.tsx",

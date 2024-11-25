@@ -1,0 +1,17 @@
+.servicesCategoryContainer {
+    @apply grid gap-[50px];
+    grid-template-columns: auto auto auto auto auto;
+}
+
+.servicesContainer {
+    @apply grid 
+    gap-[45px] 
+    pb-[30px] 
+    pt-[15px] 
+    justify-center 
+    h-[calc(60vh+75px)];
+    grid-template-columns: auto auto;
+    overflow-y: auto;
+    /* Разрешаем прокрутку */
+    overflow-x: hidden;
+}
