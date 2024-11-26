@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .font-sans {
+        font-family: sans-serif;
+    }
+}
+
+
 /* карта категории услуги */
 @property --angle {
     syntax: '<angle>';
@@ -122,3 +129,20 @@
     px-[20px]
 }
 
+
+/* Карточка услуги */
+
+.cardService {
+    @apply font-sans 
+    h-[30vh] 
+    w-[40vw] 
+    min-h-[255px] 
+    min-w-[625px] 
+    rounded-[20px]
+    shadow-[0px_0px_20px_0_rgba(0,0,0,0.25)]
+    px-[45px]
+    py-[15px]
+    flex
+    flex-col
+    justify-between
+}

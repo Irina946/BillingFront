@@ -1,5 +1,6 @@
 import { CardServicesCategory } from 'components/CardServicesCategory';
-import { useNavigate } from 'react-router-dom';
+import { ButtonEmptyViolet } from 'components/ButtonEmptyViolet';
+import { useNavigate, useParams } from 'react-router-dom';
 import styles from './services.module.css'
 
 const services = [
@@ -51,16 +52,20 @@ const services = [
 ];
 
 export const ServicesCategory = (): JSX.Element => {
+    const {id} = useParams();
 
     const navigate = useNavigate();
 
-    const handleCardClick = (id: string, title: string) => {
-        navigate(`/services/${id}`, { state: { title }});
+    const handleCardClick = (idCategory: string, title: string) => {
+        navigate(`/${id}/services/${idCategory}`, { state: { title }});
     }
 
     return (
         <div className="flex flex-col items-center px-[70px] py-[30px] font-sans">
-            <div className="font-bold text-4xl mb-[45px] self-start">Каталог</div>
+            <div className='flex items-center gap-[30px] mb-[45px] self-start'> <ButtonEmptyViolet title="Назад" onClick={() => navigate(-1)}/>
+                <div className="font-bold text-4xl ">Каталог</div>
+            </div>
+            
             <div className={styles.servicesCategoryContainer}>
                 {services.map((service) => (
                     <CardServicesCategory

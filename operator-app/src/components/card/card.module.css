@@ -1,0 +1,28 @@
+.cardContainer {
+    @apply w-[450px] h-[400px] rounded-[20px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)] pl-[30px] pr-[5px] py-[15px] grid grid-cols-2 gap-0
+}
+
+.insideContainer {
+    @apply py-[15px]
+}
+
+.insideContainerRight {
+    @apply pl-[30px]
+}
+
+.insideContainerLeft {
+    @apply border-r-[1px] border-gray
+}
+
+.servicesContainer {
+    @apply h-[280px] mb-[10px] pt-[15px];
+    overflow-y: auto;
+    /* Разрешаем прокрутку */
+    overflow-x: hidden;
+    padding-right: 15px;
+    margin-bottom: 15px;
+}
+
+.servicesContainer::-webkit-scrollbar {
+    @apply w-[5px];
+}

@@ -1,4 +1,5 @@
 import Info from "../../assets/info.svg?react";
+import styles from "./button.module.css"
 
 interface ButtonInfoProps {
     onClick: () => void
@@ -6,9 +7,13 @@ interface ButtonInfoProps {
 
 export const ButtonInfo = (props: ButtonInfoProps): JSX.Element => {
     return (
-        <button className="ml-[15px]"
-        onClick={props.onClick}>
-            <Info />
-        </button>
+        <div className={`${styles.button} ml-[15px]`}>
+            <button className={`${styles.button} ${styles.tooltipTextInformation}`} onClick={props.onClick}>
+                <Info />
+            </button>
+            <span className={styles.tooltipText}>
+                Информация
+            </span>
+        </div>
     )
 }

@@ -1,0 +1,42 @@
+.button {
+    @apply relative;
+}
+
+.tooltipText {
+    @apply
+    opacity-0 
+    absolute 
+    left-[55%] 
+    bottom-full 
+    mb-[15px] 
+    bg-blue 
+    text-white
+    w-[150px]
+    align-middle
+    text-center
+    py-[5px]
+    rounded-[4px]
+    z-[1]
+    text-lg
+    ;
+    visibility: hidden; 
+    transition: opacity 0.3s ease;
+    transform: translateX(-50%); 
+}
+
+.tooltipText::after {
+    content: "";
+    position: absolute;
+    left: 50%;             
+    bottom: -20px;          
+    margin-left: -12px; 
+    margin-right: -10px;    
+    border-width: 10px;    
+    border-style: solid;   
+    border-color: #07e2e2 transparent  transparent  transparent;
+}
+
+.button:hover .tooltipText {
+    visibility: visible; 
+    opacity: 1;        
+}

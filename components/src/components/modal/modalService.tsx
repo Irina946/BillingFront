@@ -13,7 +13,7 @@ interface ModalServiceProps {
     dateConnect?: string,
     date?: string,
     price: number,
-    writeOffPeriod: string,
+    writeOffPeriod?: string,
     onClose: () => void
 }
 

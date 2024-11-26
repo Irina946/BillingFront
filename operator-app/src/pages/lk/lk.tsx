@@ -1,15 +1,14 @@
 import { InputSearch } from "components/InputSearch";
 import { ButtonBigViolet } from "components/ButtonBig";
-import { InputModal } from "components/InputModal";
-import { ButtonExit } from "components/ButtonExit";
 import styles from "./lk.module.css"
 import { useState } from "react";
 import { Pagination } from "../../components/paginations/paginations";
+import { ModalsAppend } from "../../components/modals/modalsAppend";
 
 const listClient = [
-    { 
-        name: "Иванов Иван Иванович", 
-        number: "+7 999 999 99 01", 
+    {
+        name: "Иванов Иван Иванович",
+        number: "+7 999 999 99 01",
         tarif: "Тариф",
         balance: "100,01",
         personalAccount: "12345-678-9-1011-1213141",
@@ -162,18 +161,14 @@ const listClient = [
 ];
 
 export const Lk = (): JSX.Element => {
-
+    
     const [isOpenModal, setIsOpenModal] = useState(false);
 
     const hendleOpenModal = () => setIsOpenModal(true);
 
     const hendleCloseModal = () => setIsOpenModal(false);
 
-    const handleOutsideClick = (event: React.MouseEvent<HTMLDivElement>): void => {
-        if (event.target === event.currentTarget) {
-            setIsOpenModal(false);
-        }
-    }
+    
 
     return (
         <div className={`py-[45px] px-[70px] font-sans ${styles.customScrollbar}`}>
@@ -197,55 +192,15 @@ export const Lk = (): JSX.Element => {
                 <div className="p-[45px] pt-[15px]">
 
                     <Pagination listClient={listClient} />
-                    </div>
+                </div>
             </div>
 
-            {isOpenModal && <div className={styles.modalBG} onClick={handleOutsideClick}>
-                <div className={styles.modal} >
-                    <div className="absolute top-5 right-5">
-                        <ButtonExit onClick={() => setIsOpenModal(false)} />
-                    </div>
-                    <div className="font-bold text-black text-3xl">Создать пользователя</div>
-                    <form>
-                        <InputModal
-                            type="text"
-                            placeholder="Иванов Иван Иванович"
-                            id="fullName"
-                            title="ФИО клиента"
-                        />
-                        <InputModal
-                            type="tel"
-                            placeholder="+7 999 999 99 99"
-                            id="number"
-                            title="Номер телефона"
-                        />
-                        <InputModal
-                            type="text"
-                            placeholder="Не выбрано"
-                            id="tariff"
-                            title="Тариф"
-                        />
-                        <InputModal
-                            type="text"
-                            placeholder="11111-111-1-1111-1111111"
-                            id="personalAccount"
-                            title="Лицевой счет"
-                        />
+            {isOpenModal && <ModalsAppend onClose={hendleCloseModal} />}
 
-
-
-                    </form>
-                    <ButtonBigViolet
-                        title="Создать"
-                        onClick={hendleCloseModal}
-                    />
-
-                </div>
-
-
-            </div>}
 
         </div>
+
+
     )
 }
 

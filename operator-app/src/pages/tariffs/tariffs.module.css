@@ -1,0 +1,8 @@
+.container {
+    height: calc(100vh - 110px);
+    overflow-y: auto; /* Разрешаем прокрутку */
+    overflow-x: hidden;
+    padding-right: 15px;
+    padding-bottom: 25px;
+    padding-top: 15px;
+}

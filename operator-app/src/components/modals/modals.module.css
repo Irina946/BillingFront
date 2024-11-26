@@ -13,17 +13,17 @@
 }
 
 .modal {
-    @apply w-[520px] 
-    h-[650px]
+    @apply w-[30vw] 
+    h-[80vh]
+    min-w-[500px]
+    min-h-[650px]
     bg-white
     flex
     flex-col 
     justify-between  
     items-center
-    pb-[30px]
-    pt-[45px]
-    px-[30px] 
+    py-[60px]
+    px-[45px] 
     font-bold
     relative
-    text-3xl
 }

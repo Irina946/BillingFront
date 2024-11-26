@@ -15,7 +15,7 @@ import { InputDate } from './components/input/inputDate'
 import { ModalTarif } from './components/modal/modalTarif'
 import { ModalService } from './components/modal/modalService'
 import { ModalReport } from './components/modal/modalReport'
-import { Input } from './components/input/input'
+import { CardServices } from './components/card/cardService'
 
 function App() {
   const tarifs = [
@@ -277,13 +277,13 @@ function App() {
 
       <div className='grid gap-8 grid-cols-1 text-start ml-[38%] mt-[50px] custom-scrollbar'>
         <div>
-        <p className='text-2xl text-left mb-[30px]'>Input</p>
-        <Input
-          type='text'
-          placeholder='Placeholder' 
-          id='id'
-        />
-      </div>
+          <p className='text-2xl text-left'>Карточка услуги</p>
+          <CardServices 
+            title='Мобильный интернет'
+            description="Неограниченный доступ к интернету на скорости до 100 Мбит/с."
+            price={500}
+          />
+        </div>
         <div>
           <p className='text-2xl text-left'>Select</p>
           <InputDate
@@ -378,7 +378,6 @@ function App() {
             onClick={() => { }}
           />
         </div>
-
         <div>
           <p className='text-2xl text-left'>Input</p>
           <InputSearch
@@ -393,8 +392,6 @@ function App() {
             price={100}
           />
         </div>
-
-
       </div>
     </>
   )
