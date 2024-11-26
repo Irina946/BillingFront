@@ -1,4 +1,5 @@
 import Editing from "../../assets/editing.svg?react";
+import styles from "./button.module.css"
 
 interface ButtonEditingProps {
     onClick: () => void
@@ -6,9 +7,13 @@ interface ButtonEditingProps {
 
 export const ButtonEditing = (props: ButtonEditingProps): JSX.Element => {
     return (
-        <button className="mr-[15px]"
-        onClick={props.onClick}>
-            <Editing />
-        </button>
+        <div className={`${styles.button} mr-[15px]`}>
+            <button className={styles.button} onClick={props.onClick}>
+                <Editing />
+            </button>
+            <span className={`${styles.tooltipText} ${styles.tooltipTextEditing}`}>
+                Редактировать
+            </span>
+        </div>
     )
 }

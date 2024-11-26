@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Row } from "../row/row";
-import { InputModal } from "components/InputModal";
-import { ButtonEmptyRed } from "components/ButtonEmptyRed";
-import { ButtonViolet } from "components/ButtonViolet";
 import ArrowRight from "../../assets/arrowRight.svg?react";
-import styles from "./paginations.module.css"
+import { ModalEdit } from "../modals/modalEdit";
+import { useNavigate } from "react-router";
+import { hashId } from "../../function/shifr/shifrId";
 
-interface ClientProps {
+export interface ClientProps {
     name: string;
     number: string;
     tarif: string;
@@ -28,6 +27,7 @@ export const Pagination: React.FC<ListClientProps> = ({ listClient }) => {
     const [isOpenEditing, setIsOpenEditing] = useState<StateProps>();
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
+    const nanigate = useNavigate();
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -45,17 +45,19 @@ export const Pagination: React.FC<ListClientProps> = ({ listClient }) => {
 
     const handleOpenEditing = (client: ClientProps) => setIsOpenEditing({ open: true, client });
 
-
-    // const handleOutsideCloseEditing = (event: React.MouseEvent<HTMLDivElement>): void => {
-    //     if (event.target === event.currentTarget) {
-    //         setIsOpenEditing(false);
-    //     }
-    // }
+    const handleClickInfo = async (id: string) => {
+        const idClient = await hashId(id);
+        nanigate(`/${idClient}`, {state: {idClient}});
+    }
 
     return (
         <div>
             {currentItems.map(client => (
-                <Row key={client.personalAccount} {...client} onClickInfo={() => handleOpenEditing(client)} onClickEdit={() => handleOpenEditing(client)} />
+                <Row
+                    key={client.personalAccount}
+                    {...client}
+                    onClickInfo={ () => handleClickInfo(`${client.id}`)}
+                    onClickEdit={() => handleOpenEditing(client)} />
             ))}
             <div className="flex justify-center mt-4 items-center absolute bottom-[15px] left-[42%]">
                 <button
@@ -74,48 +76,7 @@ export const Pagination: React.FC<ListClientProps> = ({ listClient }) => {
                     <ArrowRight className={`${currentPage === totalPages ? 'opacity-50 stroke-none' : ''}`} />
                 </button>
             </div>
-            {isOpenEditing &&
-                <div
-                    // onClick={handleOutsideCloseEditing}
-                    className={styles.modalBG}>
-                    <div className={styles.modal}>
-                        Редактирование пользователя
-                        <form>
-                            <InputModal
-                                type="text"
-                                placeholder={isOpenEditing.client.name}
-                                id="fullName"
-                                title="ФИО клиента"
-                            />
-                            <InputModal
-                                type="tel"
-                                placeholder={isOpenEditing.client.number}
-                                id="number"
-                                title="Номер телефона"
-                            />
-                            <InputModal
-                                type="text"
-                                placeholder={isOpenEditing.client.tarif}
-                                id="tariff"
-                                title="Тариф"
-                            />
-                            <InputModal
-                                type="text"
-                                placeholder={isOpenEditing.client.personalAccount}
-                                id="personalAccount"
-                                title="Лицевой счет"
-                            />
-
-
-
-
-                        </form>
-                        <div className="flex justify-around px-[15px] w-full">
-                            <ButtonEmptyRed title="Удалить" />
-                            <ButtonViolet title="Сохранить" />
-                        </div>
-                    </div>
-                </div>}
+            {isOpenEditing && <ModalEdit client={isOpenEditing.client} onClose={() => setIsOpenEditing(undefined)} />}
         </div>
     );
 };

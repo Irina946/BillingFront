@@ -1,0 +1,27 @@
+.tableBg {
+    @apply rounded-[20px] 
+    w-[calc(100%-550px)] 
+    h-[680px] 
+    min-h-[500px];
+    box-shadow: 0 0 20px rgba(0,0,0,0.25);
+}
+
+.tableHeader {
+    @apply px-[45px] 
+    py-[20px] 
+    rounded-t-[20px]
+    grid
+    bg-[rgba(103,39,204,0.8)] 
+    text-black 
+    text-2xl 
+    font-bold;
+    grid-template-columns: 50% 25% 25%;
+}
+
+.customScrollbar {
+    height: 480px;
+    overflow-y: auto; /* Разрешаем прокрутку */
+    overflow-x: hidden;
+    padding-right: 15px;
+    margin-bottom: 15px;
+}
