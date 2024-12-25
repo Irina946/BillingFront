@@ -5,11 +5,21 @@ import styles from "./authorization.module.css";
 import { login } from "../../auth/auth";
 import { useNavigate } from "react-router";
 import { Logo } from "components/Logo";
+import { useState } from "react";
 
 
 interface IForm {
     number: string
     password: string
+}
+
+interface User {
+    id: number;
+    login_number: string;
+    name: string;
+    patronymic: string;
+    surname: string;
+    role: string;
 }
 
 export const Authorization = (): JSX.Element => {
@@ -25,9 +35,8 @@ export const Authorization = (): JSX.Element => {
     const handleLogin: SubmitHandler<IForm> = (formValue) => {
 
         login(formValue.number, formValue.password)
-            .then(() => {
-                navigate("/personalAccaunt");
-                window.location.reload();
+            .then((user) => {
+                navigate("/personalAccaunt", {state: {user} });
             },
                 (error) => {
                     console.log(error);

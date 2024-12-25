@@ -390,6 +390,9 @@ function App() {
             title='МегаТариф+'
             description='Описание  тарифа. Тариф самый лучший. Можно с ним сделать всё'
             price={100}
+            minutes={1000}
+            sms={1000}
+            internet={1000}
           />
         </div>
       </div>

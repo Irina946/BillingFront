@@ -7,7 +7,10 @@ import { ButtonBigViolet } from '../button/buttonBig'
 interface CardTariffProps {
     title: string,
     description: string,
-    price: number
+    price: number,
+    minutes: number,
+    sms: number,
+    internet: number
 }
 
 export const CardTariffs = (props: CardTariffProps): JSX.Element => {
@@ -26,9 +29,9 @@ export const CardTariffs = (props: CardTariffProps): JSX.Element => {
             <div className='text-sm font-bold text-gray'>
                 {props.description}
             </div>
-            <div className="text-2xl text-blackGray font-medium">300 минут</div>
-            <div className="text-2xl text-blackGray font-medium">3000 ГБ</div>
-            <div className="text-2xl text-blackGray font-medium">100 СМС</div>
+            <div className="text-2xl text-blackGray font-medium">{props.minutes} минут</div>
+            <div className="text-2xl text-blackGray font-medium">{props.internet} ГБ</div>
+            <div className="text-2xl text-blackGray font-medium">{props.sms} СМС</div>
             <div className='flex justify-between w-full items-center'>
                 <div className='text-2xl font-bold'>{props.price} <span className="text-blackGray font-medium text-lg">руб/мес</span></div>
                 <ButtonEmptyViolet
@@ -56,9 +59,9 @@ export const CardTariffs = (props: CardTariffProps): JSX.Element => {
                         <div className='text-4xl font-bold'>
                             В тариф входит
                         </div>
-                        <div className="text-3xl text-blackGray font-medium">300 минут</div>
-                        <div className="text-3xl text-blackGray font-medium">3000 ГБ</div>
-                        <div className="text-3xl text-blackGray font-medium">100 СМС</div>
+                        <div className="text-3xl text-blackGray font-medium">{props.minutes} минут</div>
+                        <div className="text-3xl text-blackGray font-medium">{props.internet} ГБ</div>
+                        <div className="text-3xl text-blackGray font-medium">{props.sms} СМС</div>
                         <div className='self-center'>
                             <ButtonBigViolet
                             title={`Подключить за ${props.price} ₽`}

@@ -24,10 +24,6 @@ const Navigate = () => {
     {
       name: "История",
       path: "/history"
-    },
-    {
-      name: "Выход",
-      path: "/"
     }
   ]
 

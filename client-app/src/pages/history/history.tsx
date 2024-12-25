@@ -2,7 +2,10 @@ import { ButtonBigViolet } from "components/ButtonBig";
 import { ModalReport } from "components/ModalReport";
 import styles from "./history.module.css";
 import { Row } from "../../components/row/row";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getHistory } from "../../request/requests";
+import { set } from "react-hook-form";
+import { IHistory } from "../../request/interface";
 
 const rows = [
     {
@@ -105,6 +108,26 @@ export const History = (): JSX.Element => {
 
     const handleCloseReportModal = () => setIsOpenreportModal(false);
 
+    const numberId = localStorage.getItem("number_id");
+
+
+    const [history, setHistory] = useState<IHistory[]>([]);
+    const [error, setError] = useState<string>("");
+
+    useEffect(() => {
+        const fetchTariffs = async () => {
+            try {
+                const data = await getHistory(Number(numberId));
+                setHistory(data);
+            } catch (error) {
+                setError("Ошибка при получении тарифов");
+                console.error("Error fetching tariffs:", error);
+            }
+        };
+
+        fetchTariffs();
+    }, []);
+
 
     return (
         <div className="px-[70px] pt-[30px] pb-[75px] font-sans flex flex-col justify-center items-center">
@@ -128,7 +151,9 @@ export const History = (): JSX.Element => {
                 </div>
                 <div className={styles.tableBody}>
                     <div className={styles.scrollBarTable}>
-                        {rows.map((row) => <Row key={row.id} {...row} />)}
+                        {history.length === 0 ? <div className="text-3xl w-full h-full text-center">Нет данных</div> :
+                            (<>{history.map((row, idx) => <Row key={idx} name={"name"} date={row.date} count={row.amount.toString()} sum={1} />)}</>)
+                        }
                     </div>
                 </div>
             </div>

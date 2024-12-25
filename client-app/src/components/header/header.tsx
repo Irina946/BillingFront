@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom"
 import { Logo } from "components/Logo";
 import styles from "./header.module.css"
+import { logout } from "../../auth/auth";
 
 interface navigatePath {
     name: string,
@@ -15,6 +16,10 @@ export const Header = (props: HeaderProps): JSX.Element => {
     const navigatePath = props.navigatePath
 
     const location = useLocation();
+
+    const handleLogout = () => {
+        logout();
+    }
 
     return (
         <div className={`${styles.header} h-[90px] w-full flex justify-between items-center pl-[15px] pr-[40px]`}>
@@ -39,6 +44,7 @@ export const Header = (props: HeaderProps): JSX.Element => {
                             {item.name}
                         </Link>
                     )}
+                <Link to="/" className={styles.navigatiLink} onClick={handleLogout}>Выход</Link>
             </div>
         </div>
     )
