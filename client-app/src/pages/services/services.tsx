@@ -12,7 +12,7 @@ export const Services = (): JSX.Element => {
     const location = useLocation()
     const navigate = useNavigate()
 
-    const title = location.state?.title
+    const title = location.state?.ru_title
     const id = location.state?.id
 
     const handleClickBack = () => {

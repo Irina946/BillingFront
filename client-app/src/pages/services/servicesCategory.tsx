@@ -10,8 +10,8 @@ export const ServicesCategory = (): JSX.Element => {
 
     const navigate = useNavigate();
 
-    const handleCardClick = (id: string, title: string) => {
-        navigate(`/services/${id}`, { state: { title, id } });
+    const handleCardClick = (id: string, title: string, ru_title: string) => {
+        navigate(`/services/${title}`, { state: { title, ru_title, id } });
     }
 
     const [servicesData, setServicesData] = useState<IServicesCategory[]>([]);
@@ -38,9 +38,9 @@ export const ServicesCategory = (): JSX.Element => {
                 {servicesData.map((service) => (
                     <CardServicesCategory
                         key={service.id}
-                        title={service.name}
-                        count={2}
-                        onClick={() => handleCardClick(service.id.toString(), service.name)}
+                        title={service.ru_name}
+                        count={service.count}
+                        onClick={() => handleCardClick(service.id.toString(), service.name, service.ru_name)}
                     />
                 ))}
             </div>

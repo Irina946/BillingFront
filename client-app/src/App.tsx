@@ -39,7 +39,7 @@ const Navigate = () => {
         <Route path="/tariffs" element={<Tariffs />} />
         <Route path="/services" element={<ServicesCategory />} />
         <Route path="/history" element={<History />} />
-        <Route path="/services/:id" element={<Services />} />
+        <Route path="/services/:title" element={<Services />} />
         <Route path="*" element={<div>404... not found </div>} />
       </Routes>
 
