@@ -11,7 +11,7 @@
 }
 
 .insideContainerLeft {
-    @apply border-r-[1px] border-gray
+    @apply border-r-[1px] border-gray flex flex-col justify-between
 }
 
 .servicesContainer {

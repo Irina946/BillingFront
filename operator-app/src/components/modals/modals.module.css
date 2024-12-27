@@ -22,7 +22,23 @@
     flex-col 
     justify-between  
     items-center
-    py-[60px]
+    py-[50px]
+    px-[45px] 
+    font-bold
+    relative
+}
+
+.modalMini {
+    @apply w-[30vw] 
+    h-[55vh]
+    min-w-[500px]
+    min-h-[620px]
+    bg-white
+    flex
+    flex-col 
+    justify-between  
+    items-center
+    py-[50px]
     px-[45px] 
     font-bold
     relative

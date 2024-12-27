@@ -2,63 +2,35 @@ import { CardServicesCategory } from 'components/CardServicesCategory';
 import { ButtonEmptyViolet } from 'components/ButtonEmptyViolet';
 import { useNavigate, useParams } from 'react-router-dom';
 import styles from './services.module.css'
-
-const services = [
-    {
-        title: "Интернет",
-        count: 10,
-        id: "service-internet"
-    },
-    {
-        title: "Мобильная связь",
-        count: 20,
-        id: "service-mobile-communication"
-    },
-    {
-        title: "Смс-услуги",
-        count: 15,
-        id: "service-sms"
-    },
-    {
-        title: "Мобильные приложения",
-        count: 25,
-        id: "service-mobile-apps"
-    },
-    {
-        title: "Техническая поддержка",
-        count: 5,
-        id: "service-technical-support"
-    },
-    {
-        title: "Мобильный интернет",
-        count: 50,
-        id: "service-mobile-internet"
-    },
-    {
-        title: "Доп услуги",
-        count: 12,
-        id: "service-additional-services"
-    },
-    {
-        title: "Пакеты услуг",
-        count: 18,
-        id: "service-service-packages"
-    },
-    {
-        title: "Консультации",
-        count: 8,
-        id: "service-consultations"
-    }
-];
+import { useEffect, useState } from 'react';
+import { getServicesCategoryList } from '../../requests/requests';
+import { IServicesCategory } from '../../requests/interface';
 
 export const ServicesCategory = (): JSX.Element => {
     const {id} = useParams();
+    const [servicesData, setServicesData] = useState<IServicesCategory[]>([]);
+    const [error, setError] = useState<string>("");
+
 
     const navigate = useNavigate();
 
-    const handleCardClick = (idCategory: string, title: string) => {
-        navigate(`/${id}/services/${idCategory}`, { state: { title }});
+    const handleCardClick = (idCategory: string, title: string, ru_title: string) => {
+        navigate(`/${id}/services/${title}`, { state: { title, ru_title, id, idCategory }});
     }
+
+    useEffect(() => {
+        const fetchTariffs = async () => {
+            try {
+                const data = await getServicesCategoryList();
+                setServicesData(data);
+            } catch (error) {
+                setError("Ошибка при получении тарифов");
+                console.error("Error fetching tariffs:", error);
+            }
+        };
+
+        fetchTariffs();
+    }, []);
 
     return (
         <div className="flex flex-col items-center px-[70px] py-[30px] font-sans">
@@ -67,15 +39,18 @@ export const ServicesCategory = (): JSX.Element => {
             </div>
             
             <div className={styles.servicesCategoryContainer}>
-                {services.map((service) => (
+                {servicesData.map((service) => (
                     <CardServicesCategory
                         key={service.id}
-                        title={service.title}
+                        title={service.ru_name}
                         count={service.count}
-                        onClick={() => handleCardClick(service.id, service.title)}
+                        onClick={() => handleCardClick(service.id.toString(), service.name, service.ru_name)}
                     />
                 ))}
             </div>
         </div>
     );
 };
+
+
+

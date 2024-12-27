@@ -35,7 +35,7 @@ export const Authorization = (): JSX.Element => {
             <div className="fons-sans font-bold text-3xl mb-[30px]">
                 Войдите в личный кабинет
             </div>
-            <form onSubmit={handleSubmit(handleLogin)}>
+            <form onSubmit={handleSubmit(handleLogin)} className="flex flex-col gap-[10px]">
                 <Input
                     type="email"
                     id="email"
