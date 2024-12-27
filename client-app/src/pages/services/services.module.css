@@ -10,7 +10,7 @@
     pt-[15px] 
     justify-center 
     h-[calc(60vh+75px)];
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto auto;
     overflow-y: auto;
     /* Разрешаем прокрутку */
     overflow-x: hidden;

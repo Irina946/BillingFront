@@ -72,3 +72,16 @@
     border-violet
     border-[1px];
 }
+
+.cardService {
+  @apply font-sans 
+  h-[250px] 
+  w-[350px] 
+  rounded-[20px]
+  shadow-[0px_0px_20px_0_rgba(0,0,0,0.25)]
+  px-[45px]
+  py-[15px]
+  flex
+  flex-col
+  justify-between
+}

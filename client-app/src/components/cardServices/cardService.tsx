@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./cardServices.module.css";
 import { IAddition } from "../../request/interface";
-import { getAddition } from "../../request/requests";
+import { deleteService, getAddition } from "../../request/requests";
 import { ButtonExit } from "components/ButtonExit";
 import { ButtonBigRed } from "components/ButtonBigRed";
 import { ButtonViolet } from "components/ButtonViolet";
@@ -12,7 +12,7 @@ interface CardServiceProps {
   name: string;
   description: string;
   price: number;
-  delete: () => Promise<void>;
+  number: string;
 }
 
 export const CardService = (props: CardServiceProps): JSX.Element => {
@@ -46,10 +46,11 @@ export const CardService = (props: CardServiceProps): JSX.Element => {
   };
 
   const handleDelete = (): void => {
-    props.delete;
+    deleteService(props.id, props.number);
     setIsOpenAlert(false);
     setIsOpen(false)
   }
+
 
   return (
     <>
@@ -61,7 +62,9 @@ export const CardService = (props: CardServiceProps): JSX.Element => {
       {isOpen && (
         <>
           {addition === null ? (
-            <>Loading...</>
+            <div className={'flex justify-center items-center h-[90vh]'}>
+            <div className="loader"></div>
+          </div>
           ) : (
             <div className={styles.modalBG} onClick={handleOutsideClick}>
               <div className={`${styles.modal} h-[425px]`}>
@@ -73,13 +76,13 @@ export const CardService = (props: CardServiceProps): JSX.Element => {
                 <div className={styles.modalInner}>
                   Абонентска плата за {`${addition?.duration}`}
                   <p className="text-4xl font-bold text-black mt-[10px]">
-                    {props.price} ₽
+                    {addition?.price} ₽
                   </p>
                 </div>
                 <div>
                   <div className="text-2xl font-bold mb-[10px]">Описание</div>
                   <div className="text-lg font-thin text-blackGray">
-                    {props.description}
+                    {addition?.description}
                   </div>
                 </div>
                 <div className="self-center mt-[30px]">

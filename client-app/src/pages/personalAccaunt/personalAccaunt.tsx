@@ -8,7 +8,7 @@ import { CardTarif } from "../../components/cardTarif/cardTarif";
 import { CardService } from "../../components/cardServices/cardService";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { deleteService, getTarif, getUser, postPayment } from "../../request/requests";
+import { getTarif, getUser, postPayment } from "../../request/requests";
 import { IClientInfo, ITarifById } from "../../request/interface";
 import {
   formatData,
@@ -50,7 +50,7 @@ export const PersonalAccaunt = (): JSX.Element => {
   }
 
   const handleSubmitFormPayment = async (formValue: IForm) => {
-    const amount = formValue.amount.slice(0,-2)
+    const amount = formValue.amount.slice(0, -2)
     if (user !== null) {
       await postPayment(user?.number_info.id, Number(amount));
     }
@@ -63,7 +63,7 @@ export const PersonalAccaunt = (): JSX.Element => {
   };
 
   const handleOpenModalFormTarif = async (): Promise<void> => {
-    
+
     if (user !== null) {
       setClientTarif(
         await getTarif(user?.number_info.activated_tarif.activated_id)
@@ -84,7 +84,9 @@ export const PersonalAccaunt = (): JSX.Element => {
   return (
     <>
       {user === null ? (
-        <div>Загрузка...</div>
+        <div className={'flex justify-center items-center h-[90vh]'}>
+          <div className="loader"></div>
+        </div>
       ) : (
         <div className="font-sans p-[5%] h-max flex justify-between items-center gap-[80px] overflow-hidden">
           <div>
@@ -149,11 +151,11 @@ export const PersonalAccaunt = (): JSX.Element => {
               {user.number_info.activated_additions.map((addition) => (
                 <CardService
                   key={addition.activated_id}
-                  id={addition.service.id}
+                  id={addition.activated_id}
                   name={addition.service.name}
                   description={""}
                   price={addition.service.price}
-                  delete={() => deleteService(addition.activated_id, user.client_info.number)}
+                  number={user.client_info.number}
                 />
               ))}
             </div>

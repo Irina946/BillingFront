@@ -21,6 +21,7 @@ export const getUser = async (): Promise<IClientInfo> => {
   });
   localStorage.setItem("user_id", response.data.client_info.id.toString());
   localStorage.setItem("number_id", response.data.number_info.id.toString());
+  localStorage.setItem("number", response.data.client_info.number);
   return response.data;
 };
 
@@ -45,7 +46,7 @@ export const getServicesList = async (id: number): Promise<IServices[]> => {
 
 const endDate = new Date();
 const startDate = new Date();
-startDate.setMonth(endDate.getMonth() - 1);
+startDate.setFullYear(endDate.getFullYear() - 1);
 
 export const getHistory = async (id_number: number): Promise<IHistory[]> => {
   const response = await axios.post(API_URL + "/transaction/history", {
@@ -82,3 +83,11 @@ export const deleteService = async (id: number, phone_number: string) => {
     },
   });
 };
+
+export const addService = async (id: number, phone_number: string) => {
+  await axios.post(`${API_URL}/activated`, {
+    activated_id: id,
+    phone_number: phone_number,
+  });
+};
+

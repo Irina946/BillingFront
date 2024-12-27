@@ -5,21 +5,15 @@ import { Row } from "../../components/row/row";
 import { useEffect, useState } from "react";
 import { getHistory } from "../../request/requests";
 import { IHistory } from "../../request/interface";
-import { formatData } from "../../function/function";
+import { formatData, formatPhoneNumber } from "../../function/function";
 
 export const History = (): JSX.Element => {
   const [isOpenreportModal, setIsOpenreportModal] = useState(false);
-
-  const handleOpenReportModal = () => setIsOpenreportModal(true);
-
-  const handleCloseReportModal = () => setIsOpenreportModal(false);
-
-  const numberId = localStorage.getItem("number_id");
-
   const [history, setHistory] = useState<IHistory[]>([]);
   const [error, setError] = useState<string>("");
 
-  console.log(history)
+  const numberId = localStorage.getItem("number_id");
+  const number = localStorage.getItem("number");
 
   useEffect(() => {
     const fetchTariffs = async () => {
@@ -41,11 +35,10 @@ export const History = (): JSX.Element => {
         История
       </div>
       <div className="flex justify-between items-center mb-[45px] w-[90vw]">
-        <div className="text-3xl font-bold">+7 900 900 90 90</div>
+        <div className="text-3xl font-bold">{number ? formatPhoneNumber(number) : ''}</div>
         <ButtonBigViolet
           title="Сформировать отчёт"
           type="button"
-          onClick={handleOpenReportModal}
         />
       </div>
       <div className={styles.tableContainer}>
@@ -65,12 +58,12 @@ export const History = (): JSX.Element => {
               </div>
             ) : (
               <>
-                {history.map((row, idx) => (
+                {history.slice().reverse().map((row, idx) => (
                   <Row
                     key={idx}
                     name={row.name}
                     date={formatData(row.date)}
-                    count={row.name === "Пополнение" ? "": row.amount.toString()}
+                    count={row.name === "Пополнение" ? "" : row.amount.toString()}
                     sum={row.name === "Пополнение" ? row.amount : row.price}
                   />
                 ))}
@@ -79,7 +72,7 @@ export const History = (): JSX.Element => {
           </div>
         </div>
       </div>
-      {isOpenreportModal && <ModalReport onClose={handleCloseReportModal} />}
+      {isOpenreportModal && <ModalReport onClose={() => setIsOpenreportModal(false)} />}
     </div>
   );
 };
