@@ -25,7 +25,9 @@ export const Tariffs = (): JSX.Element => {
         <div className="px-[70px] py-[30px] font-sans">
             <div className="font-bold text-4xl mb-[45px]">Каталог</div>
             <div className="flex flex-wrap gap-[50px] justify-center">
-                {tariffData.length === 0 ? <div>Загрузка...</div> :
+                {tariffData.length === 0 ? <div className={'flex justify-center items-center h-[70vh]'}>
+                    <div className="loader"></div>
+                </div> :
 
                     tariffData.map((tariff, index) => (
                         <CardTariffs

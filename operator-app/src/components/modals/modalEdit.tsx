@@ -3,62 +3,69 @@ import { ButtonEmptyRed } from "components/ButtonEmptyRed";
 import { ButtonViolet } from "components/ButtonViolet";
 import { ButtonExit } from "components/ButtonExit";
 import styles from "./modals.module.css";
-import { ClientProps } from "../paginations/paginations";
+import { PaginationProps } from "../paginations/paginations";
+import { IClient } from "../../requests/interface";
+import { useForm } from "react-hook-form";
 
 interface ModalEditProps {
-    client: ClientProps;
-    onClose: () => void
+  client: IClient;
+  onClose: () => void;
 }
 
 export const ModalEdit = (props: ModalEditProps) => {
+  const { register } = useForm();
 
-    const handleOutsideClose = (event: React.MouseEvent<HTMLDivElement>): void => {
-        if (event.target === event.currentTarget) {
-            props.onClose()
-        }
+  const handleOutsideClose = (
+    event: React.MouseEvent<HTMLDivElement>
+  ): void => {
+    if (event.target === event.currentTarget) {
+      props.onClose();
     }
+  };
 
-    const client = props.client
-    return (
-        <div
-            onClick={handleOutsideClose}
-            className={styles.modalBG}>
-            <div className={styles.modal}>
-                <div className="absolute top-5 right-5">
-                    <ButtonExit onClick={props.onClose} />
-                </div>
-                Редактирование пользователя
-                <form>
-                    <InputModal
-                        type="text"
-                        placeholder={client.name}
-                        id="fullName"
-                        title="ФИО клиента"
-                    />
-                    <InputModal
-                        type="tel"
-                        placeholder={client.number}
-                        id="number"
-                        title="Номер телефона"
-                    />
-                    <InputModal
-                        type="text"
-                        placeholder={client.tarif}
-                        id="tariff"
-                        title="Тариф"
-                    />
-                    <InputModal
-                        type="text"
-                        placeholder={client.personalAccount}
-                        id="personalAccount"
-                        title="Лицевой счет"
-                    />
-                </form>
-                <div className="flex justify-around px-[15px] w-full">
-                    <ButtonEmptyRed title="Удалить" />
-                    <ButtonViolet title="Сохранить" />
-                </div>
-            </div>
+  const client = props.client;
+  return (
+    <div onClick={handleOutsideClose} className={styles.modalBG}>
+      <div className={styles.modalMini}>
+        <div className="absolute top-5 right-5">
+          <ButtonExit onClick={props.onClose} />
         </div>
-    )
-}
+        <div className="text-3xl">Редактирование пользователя</div>
+        <form className="">
+          <InputModal
+            type="text"
+            placeholder={client.name}
+            id="fullName"
+            title="ФИО клиента"
+            register={register}
+          />
+          <InputModal
+            type="tel"
+            placeholder={client.number}
+            id="number"
+            title="Номер телефона"
+            register={register}
+          />
+          <InputModal
+            type="text"
+            placeholder={client.tarif_name}
+            id="tariff"
+            title="Тариф"
+            register={register}
+          />
+          <InputModal
+            type="text"
+            placeholder={client.id}
+            id="personalAccount"
+            title="Лицевой счет"
+            register={register}
+          />
+          <div className="flex justify-around px-[15px] w-full">
+            <ButtonEmptyRed title="Удалить" />
+            <ButtonViolet title="Сохранить" />
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};

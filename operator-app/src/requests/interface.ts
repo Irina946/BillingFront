@@ -1,11 +1,30 @@
-export interface ITariff {
+export interface IClient {
   id: number;
-  internet: number;
-  is_unlimited_internet: boolean;
-  minute: number;
-  sms: number;
   name: string;
-  price: number;
+  surname: string;
+  patronymic: string;
+  number: string;
+  tarif_name: string;
+  balance: number;
+}
+
+export interface IRegisterClient {
+  name: string;
+  surname: string;
+  patronymic: string;
+  id: number;
+  login_number: string;
+  role: string;
+}
+
+export interface IClientInfo {
+  name: string;
+  surname: string;
+  patronymic: string;
+  number: string;
+  contract_number: string;
+  passport: string;
+  password: string;
 }
 
 export interface IUser {
@@ -57,9 +76,26 @@ export interface INumberInfo {
   ];
 }
 
-export interface IClientInfo {
+export interface ClientInfo {
   client_info: IUser;
   number_info: INumberInfo;
+}
+
+export interface IHistory {
+  amount: number;
+  date: string;
+  name: string;
+  price: number;
+}
+
+export interface ITariff {
+  id: number;
+  internet: number;
+  is_unlimited_internet: boolean;
+  minute: number;
+  sms: number;
+  name: string;
+  price: number;
 }
 
 export interface IServicesCategory {
@@ -75,32 +111,4 @@ export interface IServices {
   id: number;
   amount: number;
   is_unlimited: boolean;
-}
-
-export interface IHistory {
-  amount: number;
-  date: string;
-  name: string;
-  price: number;
-}
-
-export interface ITarifById {
-  name: string;
-  description: string;
-  price: number;
-  duration: number;
-  internet: number;
-  is_unlimited_internet: boolean;
-  minute: number;
-  sms: number;
-}
-
-export interface IAddition {
-  name: string;
-  price: number;
-  amount: number;
-  is_unlimited: boolean;
-  description: string;
-  duration: number;
-  category_id: number;
 }

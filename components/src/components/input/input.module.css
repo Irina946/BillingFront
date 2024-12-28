@@ -82,13 +82,12 @@
 /* Input модального окна */
 
 .inputModal {
-    @apply my-[10px] 
+    @apply mb-[10px] 
         block 
         border-blackGray 
         border-[2px] 
         rounded-[8px] 
         p-[16px] 
-        w-[400px] 
         h-[50px] 
         font-medium 
         text-blackGray 

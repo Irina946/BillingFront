@@ -335,7 +335,7 @@ function App() {
           {openModalService && <ModalService
             dateConnect='15.09.2023'
             date='15.12.2024'
-            isConnect={false}
+            isConnect={true}
             price={200}
             writeOffPeriod='30 дней'
             title='Интернет'
@@ -361,7 +361,7 @@ function App() {
           <p className='text-2xl text-left'>Карточка категории тарифа</p>
           <CardServicesCategory
             title='Интернет'
-            count='12'
+            count={12}
           />
         </div>
         <div>

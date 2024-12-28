@@ -2,6 +2,9 @@ import styles from "./services.module.css"
 import { useLocation, useNavigate } from "react-router"
 import { ButtonViolet } from "components/ButtonViolet"
 import { CardServices } from "components/CardService"
+import { useEffect, useState } from "react";
+import { IServices } from "../../requests/interface";
+import { getServicesList } from "../../requests/requests";
 
 
 const internetServices = [
@@ -70,11 +73,30 @@ const internetServices = [
 export const Services = (): JSX.Element => {
     const location = useLocation()
     const navigate = useNavigate()
-    const title = location.state?.title
+    const title = location.state?.ru_title
+    const id = location.state?.idCategory
     
     const handleClickBack = () => {
         navigate(-1)
     }
+
+    const [services, setServices] = useState<IServices[]>([]);
+    const [error, setError] = useState<string>("");
+
+    useEffect(() => {
+        const fetchTariffs = async () => {
+            try {
+                const data = await getServicesList(id);
+                console.log(data);
+                setServices(data);
+            } catch (error) {
+                setError("Ошибка при получении тарифов");
+                console.error("Error fetching tariffs:", error);
+            }
+        };
+
+        fetchTariffs();
+    }, []);
 
     return (
         <div className="px-[70px] py-[30px]">
@@ -93,11 +115,11 @@ export const Services = (): JSX.Element => {
             </div>
             <div className="pt-[15px]">
                 <div className={styles.servicesContainer}>
-                    {internetServices.map((service) => (
+                    {services.map((service) => (
                         <CardServices
                             key={service.id}
-                            title={service.title}
-                            description={service.description}
+                            title={service.name}
+                            description=''
                             price={service.price}
                         />
                     ))}

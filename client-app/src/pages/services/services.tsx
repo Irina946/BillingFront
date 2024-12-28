@@ -1,10 +1,10 @@
 import { useLocation, useNavigate } from "react-router"
 import { ButtonViolet } from "components/ButtonViolet"
-import { CardServices } from "components/CardService"
 import styles from "./services.module.css"
 import { getServicesList } from "../../request/requests";
 import { useEffect, useState } from "react";
 import { IServices } from "../../request/interface";
+import { CardServices } from "../../components/cardServices/cardServiceNo";
 
 
 export const Services = (): JSX.Element => {
@@ -12,7 +12,7 @@ export const Services = (): JSX.Element => {
     const location = useLocation()
     const navigate = useNavigate()
 
-    const title = location.state?.title
+    const title = location.state?.ru_title
     const id = location.state?.id
 
     const handleClickBack = () => {
@@ -55,13 +55,15 @@ export const Services = (): JSX.Element => {
             </div>
             <div className="pt-[15px]">
                 <div className={styles.servicesContainer}>
-                    {services.length === 0 ? <div>Загрузка...</div> :
+                    {services.length === 0 ? <div className={'flex justify-center items-center h-[90vh]'}>
+                        <div className="loader"></div>
+                    </div> :
                         services.map((service, idx) => (
                             <CardServices
                                 key={idx}
                                 title={service.name}
-                                description={''}
                                 price={service.price}
+                                id={service.id}
                             />
                         ))
                     }

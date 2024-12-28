@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const API_URL = "http://51.250.8.218:8000/api/auth/jwt";
+const API_URL = "http://158.160.67.235:8000/api/auth/jwt";
 
-export const login = (number: string, password: string) => {
+export const login = (email: string, password: string) => {
     return axios
     .post(API_URL + "/login", {
-        number,
+        email,
         password
     })
     .then((response) => {

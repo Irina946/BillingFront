@@ -13,7 +13,7 @@ export const Row = (props: RowProps): JSX.Element => {
             <div className="pl-[15px]">{props.name}</div>
             <div className={styles.insideRight}>
                 <div>{props.date}</div>
-                <div>{props.count}</div>
+                <div className="text-center">{props.count !== '0' && props.count}</div>
                 <div className="text-right pr-[45px]">{props.sum} ₽</div>
             </div>
         </div>

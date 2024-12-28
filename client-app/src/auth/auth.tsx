@@ -1,7 +1,7 @@
 import axios, { all } from "axios";
 import { userAuth } from "../request/requests";
 
-const API_URL = "http://51.250.8.218:8000/api/auth/jwt";
+const API_URL = "http://158.160.67.235:8000/api/auth/jwt";
 
 
 export const login = (number: string, password: string) => {

@@ -6,7 +6,7 @@ import { ModalService } from "../modal/modalService";
 interface CardServicesProps {
     title: string,
     description: string,
-    price: number
+    price: number,
 }
 
 export const CardServices = (props: CardServicesProps): JSX.Element => {

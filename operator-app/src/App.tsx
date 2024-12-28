@@ -21,7 +21,7 @@ function Navigate() {
         <Route path="/:id" element={<ClientPage />} />
         <Route path="/:id/tariffs" element={<Tariffs />} />
         <Route path="/:id/services" element={<ServicesCategory />} />
-        <Route path="/:idClient/services/:idCategory" element={<Services />} />
+        <Route path="/:idClient/services/:title" element={<Services />} />
         <Route path="*" element={<div>404... not found </div>} />
       </Routes>
     </>
