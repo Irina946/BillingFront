@@ -1,8 +1,13 @@
-import { Route, RouteProps, redirect } from "react-router-dom";
-import { JSX } from "react/jsx-runtime";
+import { Navigate } from "react-router-dom";
 
-export const PrivateRoute = (props: JSX.IntrinsicAttributes & RouteProps) => {
-    const token = localStorage.getItem('auth');
-    return (token ? <Route {...props} /> : redirect("/login"))
+interface PrivateRouteProps {
+    component: React.ComponentType; // Тип компонента, который будет отображен
 }
 
+const PrivateRoute: React.FC<PrivateRouteProps> = ({ component: Component }) => {
+  const isLoggedIn = localStorage.getItem('user'); // Проверка наличия токена
+
+  return isLoggedIn ? <Component /> : <Navigate to="/login" />;
+};
+
+export default PrivateRoute;

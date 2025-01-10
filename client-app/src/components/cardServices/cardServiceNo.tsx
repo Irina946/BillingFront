@@ -5,7 +5,6 @@ import { ButtonBigViolet } from "components/ButtonBig";
 import { ButtonViolet } from "components/ButtonViolet";
 import { ButtonEmptyRed } from "components/ButtonEmptyRed";
 import { ButtonEmptyViolet } from "components/ButtonEmptyViolet";
-import { getAddition } from "../../request/requests";
 
 interface CardServicesProps {
     title: string,

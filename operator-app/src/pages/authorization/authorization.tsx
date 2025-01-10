@@ -4,6 +4,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { login } from "../../auth/auth";
 import { Logo } from "components/Logo";
+import { useState } from "react";
+import { AxiosError } from "axios";
 
 interface IForm {
     email: string,
@@ -12,6 +14,8 @@ interface IForm {
 
 export const Authorization = (): JSX.Element => {
     const { register, handleSubmit } = useForm<IForm>()
+    const [error, setError] = useState<number | undefined>(undefined);
+
 
     let navigate = useNavigate();
 
@@ -19,11 +23,11 @@ export const Authorization = (): JSX.Element => {
 
         login(formValue.email, formValue.password)
             .then(() => {
-                navigate("/lk");
+                navigate("/profile");
                 window.location.reload();
             },
-                (error) => {
-                    console.log(error);
+                (error: AxiosError) => {
+                    setError(error.response?.status);
                 })
     }
 
@@ -48,6 +52,8 @@ export const Authorization = (): JSX.Element => {
                     placeholder="Введите пароль"
                     register={register}
                 />
+                {error === 422 && <div className="text-red text-center font-bold -mt-[30px] mb-[10px] text-2xl">Такого пользователя не существует</div>}
+                {error === 400 && <div className="text-red text-center font-bold -mt-[30px] mb-[10px] text-2xl">Неправильный пароль</div>}
                 <ButtonBigViolet
                     title="Войти"
                     type="submit"

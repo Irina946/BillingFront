@@ -6,82 +6,17 @@ import { useEffect, useState } from "react";
 import { IServices } from "../../requests/interface";
 import { getServicesList } from "../../requests/requests";
 
-
-const internetServices = [
-    {
-        id: 1,
-        title: "Оптоволоконный интернет",
-        description: "Высокоскоростное подключение через оптоволоконные линии. Идеален для крупных семей и офисов с интенсивным использованием интернета.",
-        price: 1000,
-    },
-    {
-        id: 2,
-        title: "Мобильный интернет 4G",
-        description: "Доступ к интернету в любом месте с помощью мобильной сети 4G. Отличный выбор для людей, часто находящихся в движении.",
-        price: 800,
-    },
-    {
-        id: 3,
-        title: "Безлимитный интернет",
-        description: "Подключение без ограничений по объему трафика. Забудьте о лимитах и пользуйтесь интернетом без забот.",
-        price: 1200,
-    },
-    {
-        id: 4,
-        title: "Интернет для дома",
-        description: "Идеальный тариф для пользователей, которые проводят много времени дома. Высокая скорость и стабильное соединение.",
-        price: 900,
-    },
-    {
-        id: 5,
-        title: "Суперскоростной интернет",
-        description: "Максимальная скорость подключения до 1 Гбит/с. Подходит для геймеров и стримеров.",
-        price: 1500,
-    },
-    {
-        id: 6,
-        title: "Семейный интернет-пакет",
-        description: "Неограниченный интернет для всей семьи с адаптивной настройкой под ваши потребности.",
-        price: 1300,
-    },
-    {
-        id: 7,
-        title: "Интернет + телевидение",
-        description: "Комплексное предложение, включающее高速 интернет и доступ к цифровому телевидению с множеством каналов.",
-        price: 1600,
-    },
-    {
-        id: 8,
-        title: "Роуминг-интернет",
-        description: "Специальный тариф для пользователей, часто выезжающих за границу. Позволяет оставаться на связи с минимальными затратами.",
-        price: 2000,
-    },
-    {
-        id: 9,
-        title: "Частный интернет для бизнеса",
-        description: "Индивидуальные решения для бизнеса с гарантированной скоростью и поддержкой. Безопасное и надежное подключение.",
-        price: 2500,
-    },
-    {
-        id: 10,
-        title: "Адаптивный тариф интернет-план",
-        description: "Тариф, который автоматически подстраивается под ваши интернет-потребности на основе использования.",
-        price: 1100,
-    },
-];
-
 export const Services = (): JSX.Element => {
     const location = useLocation()
     const navigate = useNavigate()
     const title = location.state?.ru_title
     const id = location.state?.idCategory
-    
+
     const handleClickBack = () => {
         navigate(-1)
     }
 
     const [services, setServices] = useState<IServices[]>([]);
-    const [error, setError] = useState<string>("");
 
     useEffect(() => {
         const fetchTariffs = async () => {
@@ -90,7 +25,6 @@ export const Services = (): JSX.Element => {
                 console.log(data);
                 setServices(data);
             } catch (error) {
-                setError("Ошибка при получении тарифов");
                 console.error("Error fetching tariffs:", error);
             }
         };
@@ -115,14 +49,19 @@ export const Services = (): JSX.Element => {
             </div>
             <div className="pt-[15px]">
                 <div className={styles.servicesContainer}>
-                    {services.map((service) => (
-                        <CardServices
-                            key={service.id}
-                            title={service.name}
-                            description=''
-                            price={service.price}
-                        />
-                    ))}
+                    {services.length === 0 ? <div className={'flex justify-center items-center h-[90vh]'}>
+                        <div className="loader"></div>
+                    </div> :
+                        services.map((service, idx) => (
+                            <CardServices
+                                key={idx}
+                                title={service.name}
+                                price={service.price}
+                                id={service.id}
+                            />
+                        ))
+                    }
+                    
                 </div>
             </div>
         </div>

@@ -38,6 +38,7 @@ export const Tariffs = (): JSX.Element => {
                 <div className="flex items-center gap-[30px] mb-[45px]"> <ButtonEmptyViolet title="Назад" onClick={handleClickBack}/>
                 <div className="font-bold text-4xl">Каталог</div></div>
                 <div className="flex flex-wrap gap-[50px] justify-center">
+                    {error && <div>{error}</div>}
                     {tariffData.map((tariff) => (
                         <CardTariffs
                             key={tariff.id}

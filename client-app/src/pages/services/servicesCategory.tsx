@@ -15,7 +15,6 @@ export const ServicesCategory = (): JSX.Element => {
     }
 
     const [servicesData, setServicesData] = useState<IServicesCategory[]>([]);
-    const [error, setError] = useState<string>("");
 
     useEffect(() => {
         const fetchTariffs = async () => {
@@ -23,7 +22,6 @@ export const ServicesCategory = (): JSX.Element => {
                 const data = await getServicesCategoryList();
                 setServicesData(data);
             } catch (error) {
-                setError("Ошибка при получении тарифов");
                 console.error("Error fetching tariffs:", error);
             }
         };

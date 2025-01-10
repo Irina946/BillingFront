@@ -10,6 +10,7 @@ import { ClientInfo, IHistory } from "../../requests/interface";
 import { getClient, getHistory } from "../../requests/requests";
 import { formatPhoneNumber } from "../../components/row/row";
 
+
 export const formatDate = (date: string) => {
   return `${date.slice(8, 10)}.${date.slice(5, 7)}.${date.slice(0, 4)}`;
 };
@@ -26,24 +27,79 @@ export const ClientPage = (): JSX.Element => {
       try {
         const data = await getClient(numberClient);
         const dataHistory = await getHistory(data.number_info.id)
-        setClient(data);
         setHistory(dataHistory)
+        localStorage.setItem("client", JSON.stringify(data));
+        setClient(JSON.parse(localStorage.getItem("client") || ""));
       } catch (error) {
         console.error(error);
       }
     };
 
     if (numberClient) {
-        getThisClient();
-      }
+      getThisClient();
+    }
   }, [numberClient]);
 
+  const downloadHTML = () => {
+    const htmlContent = `
+      <html>
+        <head>
+          <title>Отчёт</title>
+          <style>
+            body { font-family: Arial, sans-serif; }
+            table { width: 100%; border-collapse: collapse; }
+            th, td { border: 1px solid black; padding: 8px; text-align: left; }
+            th { background-color: #eee; }
+          </style>
+        </head>
+        <body>
+          <h1>Отчет по номеру ${client?.client_info.number ? formatPhoneNumber(client?.client_info.number) : ''} за месяц</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>Наименование</th>
+                <th>Дата</th>
+                <th>Количество</th>
+                <th>Сумма</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${history.length === 0 ? `<tr><td colspan="4">Нет данных</td></tr>` :
+        history.slice().reverse().map(row => `
+                <tr>
+                  <td>${row.name}</td>
+                  <td>${formatDate(row.date)}</td>
+                  <td>${row.name === "Пополнение" ? "" : row.amount}</td>
+                  <td>${row.name === "Пополнение" ? row.amount : row.price}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </body>
+      </html>`;
+
+    const blob = new Blob([htmlContent], { type: 'text/html' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'report.html';
+    link.click();
+    URL.revokeObjectURL(link.href);  // очищаем объект URL
+  };
+
+  const clickBack = () => {
+    localStorage.removeItem("client");
+    navigate(-1);
+  }
+
+  if (!client) return (<div className="flex justify-center align-middle text-center"><div className="loader"></div></div>)
 
 
   return (
+
     <div className="m-[45px]">
       <div className="flex justify-between items-center mb-[60px]">
-        <ButtonEmptyViolet title="Назад" onClick={() => navigate(-1)} />
+        <ButtonEmptyViolet title="Назад" onClick={clickBack} />
+
         <div className="flex gap-[30px] text-4xl font-bold relative">
           <div>
             {client?.client_info.surname} {client?.client_info.name}{" "}
@@ -66,8 +122,8 @@ export const ClientPage = (): JSX.Element => {
             date={
               client
                 ? formatDate(
-                    client?.number_info.activated_tarif.expiration_date
-                  )
+                  client?.number_info.activated_tarif.expiration_date
+                )
                 : ""
             }
           />
@@ -100,11 +156,12 @@ export const ClientPage = (): JSX.Element => {
               ))}
             </div>
             <div className="flex justify-center items-center pt-[15px] border-t-[1px] border-blackGray h-[80px]">
-              <ButtonBigViolet title="сформировать отчет" />
+              <ButtonBigViolet title="Сформировать отчет" onClick={downloadHTML} />
             </div>
           </div>
         </div>
       </div>
+
     </div>
   );
 };

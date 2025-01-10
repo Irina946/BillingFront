@@ -9,8 +9,8 @@ export const Header = (): JSX.Element => {
     const navigate = useNavigate();
     const [isClick, setIsClick] = useState(false)
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const name = localStorage.getItem("name")?.replace(/"/g, '');
 
-    // Закрываем dropdown при клике вне его
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -36,7 +36,7 @@ export const Header = (): JSX.Element => {
             "
                 onClick={() => setIsClick(true)}
             >
-                Иванов И.И.
+                {name}
             </button>
             {isClick && (
                 <div className="absolute 
@@ -45,7 +45,7 @@ export const Header = (): JSX.Element => {
             bg-white 
             border-[1px] 
             border-gray 
-            w-[130px]
+            w-[200px]
             h-[50px]
             p-[10px]
             flex 

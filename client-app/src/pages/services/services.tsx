@@ -20,7 +20,6 @@ export const Services = (): JSX.Element => {
     }
 
     const [services, setServices] = useState<IServices[]>([]);
-    const [error, setError] = useState<string>("");
 
     useEffect(() => {
         const fetchTariffs = async () => {
@@ -29,7 +28,6 @@ export const Services = (): JSX.Element => {
                 console.log(data);
                 setServices(data);
             } catch (error) {
-                setError("Ошибка при получении тарифов");
                 console.error("Error fetching tariffs:", error);
             }
         };

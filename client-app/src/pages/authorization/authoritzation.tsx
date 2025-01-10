@@ -6,6 +6,7 @@ import { login } from "../../auth/auth";
 import { useNavigate } from "react-router";
 import { Logo } from "components/Logo";
 import { useState } from "react";
+import { AxiosError } from "axios";
 
 
 interface IForm {
@@ -13,18 +14,10 @@ interface IForm {
     password: string
 }
 
-interface User {
-    id: number;
-    login_number: string;
-    name: string;
-    patronymic: string;
-    surname: string;
-    role: string;
-}
-
 export const Authorization = (): JSX.Element => {
 
     const { register, handleSubmit, formState } = useForm<IForm>()
+    const [error, setError] = useState<number | undefined>(undefined);
 
     const numberError = formState.errors["number"]?.message;
 
@@ -36,10 +29,10 @@ export const Authorization = (): JSX.Element => {
 
         login(formValue.number, formValue.password)
             .then((user) => {
-                navigate("/personalAccaunt", {state: {user} });
+                navigate("/profile", {state: {user} });
             },
-                (error) => {
-                    console.log(error);
+                (error: AxiosError) => {
+                    setError(error.response?.status);
                 });
 
     }
@@ -69,6 +62,8 @@ export const Authorization = (): JSX.Element => {
                     placeholder="Введите пароль"
                     register={register}
                 />
+                {error === 422 && <div className="text-red text-center font-bold -mt-[30px] mb-[10px] text-2xl">Такого пользователя не существует</div>}
+                {error === 400 && <div className="text-red text-center font-bold -mt-[30px] mb-[10px] text-2xl">Неправильный пароль</div>}
                 <ButtonBigViolet
                     title="Войти"
                     type="submit"

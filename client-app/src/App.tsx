@@ -6,6 +6,7 @@ import { Tariffs } from "./pages/tariffs/tariffs";
 import { ServicesCategory } from "./pages/services/servicesCategory";
 import { History } from "./pages/history/history";
 import { Services } from "./pages/services/services";
+import PrivateRoute from "./auth/PrivateRoute";
 
 const Navigate = () => {
   const navigateList = [
@@ -35,11 +36,11 @@ const Navigate = () => {
       <Routes>
         <Route path="/login" element={<Authorization />} />
         <Route path='/' element={<Authorization />} />
-        <Route path="/personalAccaunt" element={<PersonalAccaunt />} />
-        <Route path="/tariffs" element={<Tariffs />} />
-        <Route path="/services" element={<ServicesCategory />} />
-        <Route path="/history" element={<History />} />
-        <Route path="/services/:title" element={<Services />} />
+        <Route path="/profile" element={<PrivateRoute component={PersonalAccaunt} />} />
+        <Route path="/tariffs" element={<PrivateRoute component={Tariffs} />} />
+        <Route path="/services" element={<PrivateRoute component={ServicesCategory} />} />
+        <Route path="/history" element={<PrivateRoute component={History} />} />
+        <Route path="/services/:title" element={<PrivateRoute component={Services} />} />
         <Route path="*" element={<div>404... not found </div>} />
       </Routes>
 
