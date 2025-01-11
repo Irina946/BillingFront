@@ -1,4 +1,4 @@
-import Exit from '../../assets/exit.svg?react';
+import Exit from '../../assets/Exit.svg?react';
 
 interface ButtonExitProps {
     onClick?: () => void
