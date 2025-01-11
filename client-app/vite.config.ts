@@ -8,7 +8,7 @@ export default defineConfig({
     federation({
       name: "client-app",
       remotes: {
-        components: "http://localhost:4173/assets/remoteEntry.js"
+        components: "http://158.160.67.57/assets/remoteEntry.js"
       },
       shared: ["react", "react-dom"]
     })
