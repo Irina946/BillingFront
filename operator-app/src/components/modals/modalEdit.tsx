@@ -3,7 +3,6 @@ import { ButtonEmptyRed } from "components/ButtonEmptyRed";
 import { ButtonViolet } from "components/ButtonViolet";
 import { ButtonExit } from "components/ButtonExit";
 import styles from "./modals.module.css";
-import { PaginationProps } from "../paginations/paginations";
 import { IClient } from "../../requests/interface";
 import { useForm } from "react-hook-form";
 

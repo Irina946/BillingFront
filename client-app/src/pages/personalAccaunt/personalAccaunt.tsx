@@ -29,7 +29,6 @@ export const PersonalAccaunt = (): JSX.Element => {
   const { register, handleSubmit } = useForm<IForm>();
 
   const [user, setUser] = useState<IClientInfo | null>(null);
-  const [error, setError] = useState<string>("");
 
   useEffect(() => {
     const fetchTariffs = async () => {
@@ -37,7 +36,6 @@ export const PersonalAccaunt = (): JSX.Element => {
         const data = await getUser();
         setUser(data);
       } catch (error) {
-        setError("Ошибка при получении тарифов");
         console.error("Error fetching tariffs:", error);
       }
     };

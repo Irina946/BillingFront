@@ -24,7 +24,7 @@ export const ServicesCategory = (): JSX.Element => {
                 const data = await getServicesCategoryList();
                 setServicesData(data);
             } catch (error) {
-                setError("Ошибка при получении тарифов");
+                setError("Ошибка при получении сервисов");
                 console.error("Error fetching tariffs:", error);
             }
         };
@@ -39,6 +39,7 @@ export const ServicesCategory = (): JSX.Element => {
             </div>
             
             <div className={styles.servicesCategoryContainer}>
+                {error && <div>{error}</div>}
                 {servicesData.map((service) => (
                     <CardServicesCategory
                         key={service.id}

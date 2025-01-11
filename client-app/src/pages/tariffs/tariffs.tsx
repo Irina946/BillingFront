@@ -5,7 +5,6 @@ import { getTarifs } from "../../request/requests";
 
 export const Tariffs = (): JSX.Element => {
     const [tariffData, setTariffData] = useState<ITariff[]>([]);
-    const [error, setError] = useState<string>("");
 
     useEffect(() => {
         const fetchTariffs = async () => {
@@ -13,7 +12,6 @@ export const Tariffs = (): JSX.Element => {
                 const data = await getTarifs();
                 setTariffData(data);
             } catch (error) {
-                setError("Ошибка при получении тарифов");
                 console.error("Error fetching tariffs:", error);
             }
         };

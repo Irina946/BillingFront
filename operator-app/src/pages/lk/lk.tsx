@@ -1,4 +1,3 @@
-import { InputSearch } from "components/InputSearch";
 import { ButtonBigViolet } from "components/ButtonBig";
 import styles from "./lk.module.css";
 import { useEffect, useState } from "react";
@@ -11,9 +10,9 @@ export const Lk = (): JSX.Element => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [clients, setClients] = useState<IClient[]>([]);
   const [error, setError] = useState<string>("");
+  const [search, setSearch] = useState<string>("");
 
   const hendleOpenModal = () => setIsOpenModal(true);
-
   const hendleCloseModal = () => setIsOpenModal(false);
 
   useEffect(() => {
@@ -30,10 +29,31 @@ export const Lk = (): JSX.Element => {
     fetchClients();
   }, []);
 
+  // Фильтрация клиентов
+  const filteredClients = clients.filter(client => {
+    const searchText = search.toLowerCase();
+    return (
+      client.name.toLowerCase().includes(searchText) ||
+      client.surname.toLowerCase().includes(searchText) ||
+      client.number.includes(search) ||
+      client.tarif_name.toLowerCase().includes(searchText)
+    );
+  });
+
   return (
     <div className={`py-[45px] px-[70px] font-sans ${styles.customScrollbar}`}>
       <div className="flex justify-between items-end mb-[45px]">
-        <InputSearch />
+        <label htmlFor="search" className="font-sans font-medium text-xl color-black">
+          Введите ФИО, номер телефона или названия тарифа
+          <input
+            id="search"
+            type="text"
+            placeholder="Поиск"
+            className={styles.search}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)} // Установка состояния поиска
+          />
+        </label>
         <ButtonBigViolet
           title="Добавить пользователя"
           onClick={hendleOpenModal}
@@ -49,7 +69,8 @@ export const Lk = (): JSX.Element => {
           </div>
         </div>
         <div className="p-[45px] pt-[15px]">
-          <Pagination listClient={clients} />
+          {error && <div>{error}</div>}
+          <Pagination listClient={filteredClients} /> {/* Отображение отфильтрованных клиентов */}
         </div>
       </div>
 

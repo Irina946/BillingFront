@@ -6,6 +6,7 @@ import { ClientPage } from './pages/client/client';
 import { Tariffs } from './pages/tariffs/tariffs';
 import { ServicesCategory } from './pages/services/servicesCategory';
 import { Services } from './pages/services/services';
+import PrivateRoute from './auth/PrivateRoute';
 
 function Navigate() {
 
@@ -17,11 +18,11 @@ function Navigate() {
       <Routes>
         <Route path="/login" element={<Authorization />} />
         <Route path="/" element={<Authorization />} />
-        <Route path='/lk'  element={<Lk />} />
-        <Route path="/:id" element={<ClientPage />} />
-        <Route path="/:id/tariffs" element={<Tariffs />} />
-        <Route path="/:id/services" element={<ServicesCategory />} />
-        <Route path="/:idClient/services/:title" element={<Services />} />
+        <Route path='/profile'  element={<PrivateRoute component={Lk} />} />
+        <Route path="/:id" element={<PrivateRoute component={ClientPage} />} />
+        <Route path="/:id/tariffs" element={<PrivateRoute component={Tariffs} />} />
+        <Route path="/:id/services" element={<PrivateRoute component={ServicesCategory} />} />
+        <Route path="/:idClient/services/:title" element={<PrivateRoute component={Services} />} />
         <Route path="*" element={<div>404... not found </div>} />
       </Routes>
     </>

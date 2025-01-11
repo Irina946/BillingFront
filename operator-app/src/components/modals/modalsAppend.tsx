@@ -3,10 +3,7 @@ import { InputModal } from "components/InputModal";
 import { ButtonExit } from "components/ButtonExit";
 import styles from "./modals.module.css";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { IClientInfo, IRegisterClient } from "../../requests/interface";
-import { postRegisterClient } from "../../requests/requests";
-import { useNavigate } from "react-router";
-import { useState } from "react";
+import { IClientInfo } from "../../requests/interface";
 
 interface ModalAppendProps {
     onClose: () => void;
@@ -22,7 +19,6 @@ const generateContractNumber = (): string => {
 
 export const ModalsAppend = (props: ModalAppendProps): JSX.Element => {
     const { register, handleSubmit } = useForm<IClientInfo>();
-    const [newClient, setNewClient] = useState<IRegisterClient | undefined>();
 
     const handleOutsideClick = (
         event: React.MouseEvent<HTMLDivElement>
@@ -31,8 +27,6 @@ export const ModalsAppend = (props: ModalAppendProps): JSX.Element => {
             props.onClose();
         }
     };
-
-    let navigate = useNavigate();
 
     const handleClient: SubmitHandler<IClientInfo> = async (
         formValue: IClientInfo
