@@ -41,8 +41,7 @@ export const Pagination: React.FC<PaginationProps> = ({ listClient }) => {
     setIsOpenEditing({ open: true, client });
   };
 
-  const handleClickInfo = async (id: string, number: string) => {
-    const idClient = await hashId(id);
+  const handleClickInfo = async (idClient: string, number: string) => {
     navigate(`/${idClient}`, { state: { idClient, number }  });
   };
 

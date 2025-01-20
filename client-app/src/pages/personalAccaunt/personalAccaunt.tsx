@@ -148,8 +148,8 @@ export const PersonalAccaunt = (): JSX.Element => {
             >
               {user.number_info.activated_additions.map((addition) => (
                 <CardService
-                  key={addition.activated_id}
-                  id={addition.activated_id}
+                  key={addition.service.id}
+                  id={addition.service.id}
                   name={addition.service.name}
                   description={""}
                   price={addition.service.price}
