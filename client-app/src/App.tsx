@@ -12,7 +12,7 @@ const Navigate = () => {
   const navigateList = [
     {
       name: "Главная",
-      path: "/personalAccaunt"
+      path: "/profile"
     },
     {
       name: "Тарифы",
