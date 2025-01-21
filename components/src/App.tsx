@@ -393,7 +393,6 @@ function App() {
             minutes={1000}
             sms={1000}
             internet={1000}
-            handleConnecting={() => { }}
           />
         </div>
       </div>
