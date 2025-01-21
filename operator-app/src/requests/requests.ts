@@ -4,7 +4,8 @@ import { ClientInfo, IClient, IClientInfo, IHistory, IRegisterClient, IServices,
 const API_URL = "http://158.160.67.235:8000/api";
 
 export const getClients = async (): Promise<IClient[]> => {
-  const response = await axios.get(`${API_URL}/operator/clients`);
+  const response = await axios.get(`${API_URL}/operator/clients?page=1&size=50`,
+  );
   return response.data;
 };
 
@@ -63,3 +64,18 @@ export const getServicesList = async (id: number): Promise<IServices[]> => {
   });
   return response.data;
 };
+
+export const addService = async (id: number, phone_number: string) => {
+  await axios.post(`${API_URL}/activated`, {
+    service_id: id,
+    phone_number: phone_number,
+  });
+};
+
+export const changeTariff = async (id: number, phone_number: string) => {
+  await axios.post(`${API_URL}/activated/change`, {
+    tarif_id: id,
+    phone_number: phone_number,
+  });
+};
+

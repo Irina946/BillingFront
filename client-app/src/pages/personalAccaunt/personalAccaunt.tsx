@@ -43,28 +43,27 @@ export const PersonalAccaunt = (): JSX.Element => {
     fetchTariffs();
   }, []);
 
-  if (clientTarif !== undefined) {
-    console.log(clientTarif);
-  }
-
   const handleSubmitFormPayment = async (formValue: IForm) => {
     const amount = formValue.amount.slice(0, -2)
     if (user !== null) {
       await postPayment(user?.number_info.id, Number(amount));
+      
     }
     setUser(await getUser())
     setIsOpenPayment(false);
   };
+
+  localStorage.setItem("tarif", user?.number_info.activated_tarif?.service?.id?.toString() || '');
 
   const handleOpenModalFormPayment = (): void => {
     setIsOpenPayment(true);
   };
 
   const handleOpenModalFormTarif = async (): Promise<void> => {
-
-    if (user !== null) {
+    
+    if (user?.number_info.activated_tarif !== null && user !== null) {
       setClientTarif(
-        await getTarif(user?.number_info.activated_tarif.activated_id)
+        await getTarif(user?.number_info.activated_tarif.service.id)
       );
     }
     setIsOpenTarif(true);
@@ -78,6 +77,8 @@ export const PersonalAccaunt = (): JSX.Element => {
       setIsOpenTarif(false);
     }
   };
+
+  
 
   return (
     <>
@@ -95,8 +96,8 @@ export const PersonalAccaunt = (): JSX.Element => {
             <div className="font-bold text-[40px] mb-[60px]">
               {formatPhoneNumber(user?.client_info.number || "")}
             </div>
-
-            <CardBalance
+            {user.number_info.activated_tarif !== null ? (
+              <CardBalance
               user={user.client_info.role}
               balance={user.number_info.balance}
               payment={user.number_info.activated_tarif.service.price}
@@ -105,14 +106,25 @@ export const PersonalAccaunt = (): JSX.Element => {
               )}
               onClick={handleOpenModalFormPayment}
             />
+            ) : (<CardBalance
+              user={user.client_info.role}
+              balance={user.number_info.balance}
+              payment={''}
+              date={formatData(
+                ''
+              )}
+              onClick={handleOpenModalFormPayment}
+            />)}
+            
           </div>
           <div className={`${styles.tarif}`}>
             <button
               className={styles.buttonTarif}
               onClick={handleOpenModalFormTarif}
             >
-              {user.number_info.activated_tarif.service.name}
+              {user.number_info.activated_tarif?.service?.name !== null ? user.number_info.activated_tarif?.service?.name : ''}
             </button>
+            {user.number_info.activated_tarif !== null ? (
             <div className="flex justify-start items-center h-[210px] gap-[4%]">
               <CardTarif
                 name="Минуты"
@@ -131,7 +143,8 @@ export const PersonalAccaunt = (): JSX.Element => {
                 remains={user.number_info.rests.sms}
                 full={user.number_info.activated_tarif.service.sms}
               />
-            </div>
+            
+            </div>) : (<div className="text-3xl font-bold ml-[10px] h-[210px] ">Тариф не подключен</div>)}
 
             <div className="font-bold text-3xl mb-[15px] pl-[15px]">Услуги</div>
             <div
@@ -146,9 +159,9 @@ export const PersonalAccaunt = (): JSX.Element => {
                                 ${styles.customScrollbar}
                             `}
             >
-              {user.number_info.activated_additions.map((addition) => (
+              {user.number_info.activated_additions.map((addition, idx) => (
                 <CardService
-                  key={addition.service.id}
+                  key={idx}
                   id={addition.service.id}
                   name={addition.service.name}
                   description={""}

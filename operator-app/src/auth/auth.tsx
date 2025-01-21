@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const API_URL = "http://158.160.67.235:8000/api/auth/jwt";
-export const userAuth = localStorage.getItem("user");
+export const userAuth = JSON.parse(localStorage.getItem("user")!);
+const refresh = JSON.parse(localStorage.getItem("refresh")!)
 
 export const login = (email: string, password: string) => {
     return axios
@@ -13,6 +14,7 @@ export const login = (email: string, password: string) => {
             if (response.data.access_token) {
                 localStorage.setItem("user", JSON.stringify(response.data.access_token));
                 localStorage.setItem("name", `${JSON.stringify(response.data.user.surname)} ${JSON.stringify(response.data.user.name)}`);
+                localStorage.setItem("refresh", JSON.stringify(response.data.refresh_token))
             }
         });
 };
@@ -20,9 +22,12 @@ export const login = (email: string, password: string) => {
 export const refreshToken = () => {
     const response = axios
         .post(API_URL + "/refresh", {
+            refresh_token: refresh
+        },
+             {
             headers: {
-                Authorization: "Bearer " + userAuth?.slice(1, userAuth.length - 1)
-            }
+                Authorization: "Bearer " + userAuth,
+              }
         })
         .then((response) => {
             if (response.data.access_token) {
@@ -49,4 +54,18 @@ export default function authHeader() {
         return {Authorization: ""};
     }
 }
+
+const scheduleTokenRefresh = () => {
+    const REFRESH_INTERVAL = 29 * 60 * 1000;
+
+    setInterval(async () => {
+        try {
+            await refreshToken();
+        } catch (error) {
+            console.error("Ошибка обновления токена:", error);
+        }
+    }, REFRESH_INTERVAL);
+};
+
+scheduleTokenRefresh();
 

@@ -89,7 +89,7 @@ export interface IHistory {
 }
 
 export interface ITariff {
-  id: number;
+  service_id: number;
   internet: number;
   is_unlimited_internet: boolean;
   minute: number;
@@ -108,7 +108,7 @@ export interface IServicesCategory {
 export interface IServices {
   name: string;
   price: number;
-  id: number;
+  service_id: number;
   amount: number;
   is_unlimited: boolean;
 }

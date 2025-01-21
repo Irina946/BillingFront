@@ -41,6 +41,7 @@ export const CardService = (props: CardServiceProps): JSX.Element => {
     setIsOpen(true);
   };
 
+
   const handleCloseModal = (): void => {
     setIsOpen(false);
   };

@@ -5,8 +5,9 @@ import { ButtonBigViolet } from "components/ButtonBig";
 import { ButtonViolet } from "components/ButtonViolet";
 import { ButtonEmptyRed } from "components/ButtonEmptyRed";
 import { ButtonEmptyViolet } from "components/ButtonEmptyViolet";
-import { addService } from "../../request/requests";
+import { addService } from "../../requests/requests";
 import { AxiosError } from "axios";
+import { ClientInfo } from "../../requests/interface";
 
 interface CardServicesProps {
     title: string,
@@ -20,9 +21,10 @@ export const CardServices = (props: CardServicesProps): JSX.Element => {
     const [isOpenAlert, setIsOpenAlert] = useState(false);
     const [isOpenNoMoney, setIsOpenNoMoney] = useState(false)
     const [isOpenConnect, setIsOpenConnect] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
-
-    const phoneNumber = localStorage.getItem("number");
+    const client: ClientInfo = JSON.parse(localStorage.getItem("client") || "")
+    const phoneNumber = client.client_info.number
 
 
     const handleOutsideClick = (
@@ -44,6 +46,7 @@ export const CardServices = (props: CardServicesProps): JSX.Element => {
     };
 
     const handleAddService = async () => {
+        setIsLoading(true)
         try {
             await addService(props.id, phoneNumber || '')
             setIsOpenAlert(false);
@@ -61,6 +64,8 @@ export const CardServices = (props: CardServicesProps): JSX.Element => {
                     setIsOpenNoMoney(false);
                 }, 2000);
             }
+        } finally {
+            setIsLoading(false)
         }
     }
 
@@ -183,6 +188,9 @@ export const CardServices = (props: CardServicesProps): JSX.Element => {
                 </div>
             </div>
             }
+            {isLoading && <div className={styles.modalBG}>
+                <div className='loader'></div>
+            </div>}
         </div>
 
     );

@@ -1,10 +1,12 @@
-import { CardTariffs } from "components/CardTariffs";
+
 import { useEffect, useState } from "react";
 import { ITariff } from "../../request/interface";
-import { getTarifs } from "../../request/requests";
+import { changeTariff, getTarifs } from "../../request/requests";
+import { CardTariffs } from "../../components/tarif/tarif";
 
 export const Tariffs = (): JSX.Element => {
     const [tariffData, setTariffData] = useState<ITariff[]>([]);
+    const phoneNumber = localStorage.getItem("number");
 
     useEffect(() => {
         const fetchTariffs = async () => {
@@ -19,6 +21,7 @@ export const Tariffs = (): JSX.Element => {
         fetchTariffs();
     }, []);
 
+
     return (
         <div className="px-[70px] py-[30px] font-sans">
             <div className="font-bold text-4xl mb-[45px]">Каталог</div>
@@ -27,15 +30,17 @@ export const Tariffs = (): JSX.Element => {
                     <div className="loader"></div>
                 </div> :
 
-                    tariffData.map((tariff, index) => (
+                    tariffData.filter((tarif) => tarif.service_id !== Number(localStorage.getItem('tarif'))).map((tariff) => (
                         <CardTariffs
-                            key={`${tariff.id}-${index}`}
+                            key={tariff.service_id}
                             title={tariff.name}
                             description={''}
                             price={tariff.price}
                             minutes={tariff.minute}
                             sms={tariff.sms}
                             internet={tariff.internet}
+                            service_id={tariff.service_id}
+                            phone={phoneNumber || ''}
                         />
                     ))
 

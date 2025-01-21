@@ -25,7 +25,6 @@ export const Services = (): JSX.Element => {
         const fetchTariffs = async () => {
             try {
                 const data = await getServicesList(id);
-                console.log(data);
                 setServices(data);
             } catch (error) {
                 console.error("Error fetching tariffs:", error);
@@ -61,7 +60,7 @@ export const Services = (): JSX.Element => {
                                 key={idx}
                                 title={service.name}
                                 price={service.price}
-                                id={service.id}
+                                id={service.service_id}
                             />
                         ))
                     }

@@ -3,7 +3,6 @@ import { Row } from "../row/row";
 import ArrowRight from "../../assets/arrowRight.svg?react";
 import { ModalEdit } from "../modals/modalEdit";
 import { useNavigate } from "react-router";
-import { hashId } from "../../function/shifr/shifrId";
 import { IClient } from "../../requests/interface";
 
 export interface PaginationProps {

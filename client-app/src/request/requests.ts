@@ -86,8 +86,16 @@ export const deleteService = async (id: number, phone_number: string) => {
 
 export const addService = async (id: number, phone_number: string) => {
   await axios.post(`${API_URL}/activated`, {
-    activated_id: id,
+    service_id: id,
     phone_number: phone_number,
   });
 };
+
+export const changeTariff = async (id: number, phone_number: string) => {
+  await axios.post(`${API_URL}/activated/change`, {
+    tarif_id: id,
+    phone_number: phone_number,
+  });
+};
+
 

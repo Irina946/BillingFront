@@ -30,6 +30,7 @@ export const Authorization = (): JSX.Element => {
         login(formValue.number, formValue.password)
             .then((user) => {
                 navigate("/profile", {state: {user} });
+                window.location.reload();
             },
                 (error: AxiosError) => {
                     setError(error.response?.status);

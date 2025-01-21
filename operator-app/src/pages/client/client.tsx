@@ -115,6 +115,7 @@ export const ClientPage = (): JSX.Element => {
       </div>
       <div className="flex justify-between items-center">
         <div className="grid gap-[30px]">
+          {client?.number_info.activated_tarif !== null ?
           <CardBalance
             user="operator"
             balance={client?.number_info.balance}
@@ -126,8 +127,16 @@ export const ClientPage = (): JSX.Element => {
                 )
                 : ""
             }
+          /> : 
+          <CardBalance
+            user="operator"
+            balance={client?.number_info.balance}
+            payment={0}
+            date={""}
           />
+          }
           {client ? (
+            client.number_info.activated_tarif !== null ?
             <Card
               tariff={{
                 name: client.number_info.activated_tarif.service.name,
@@ -138,7 +147,17 @@ export const ClientPage = (): JSX.Element => {
                 id: client.number_info.activated_tarif.service.id
               }}
               services={client.number_info.activated_additions}
-            />
+            /> : <Card
+            tariff={{
+              name: 'Тариф не подключен',
+              price: 0,
+              minutes: 0,
+              sms: 0,
+              internet: 0,
+              id: -1
+            }}
+            services={client.number_info.activated_additions}
+          /> 
           ) : (
             <></>
           )}

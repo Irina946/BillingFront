@@ -1,0 +1,87 @@
+.container {
+  @apply bg-blue 
+    text-white
+    w-[30%] 
+    h-[95%]
+    p-[20px] 
+    rounded-[10px] 
+    font-sans
+    font-medium 
+    text-center
+    flex
+    flex-col
+    justify-between
+    items-center
+    gap-[10px]
+    shadow-[4px_4px_10px_rgba(0,0,0,0.25)]
+    mb-[10px]
+    hover:bg-[rgba(0,201,201)]
+    focus:bg-[rgba(0,201,201)]
+    active:bg-blue;
+}
+
+.modalBG {
+  @apply fixed
+    top-0
+    left-0
+    w-full
+    h-lvh
+    bg-[rgb(80,87,89,0.7)]
+    backdrop-blur-[2px]
+    flex
+    justify-center
+    items-center
+    z-[1];
+}
+
+.modal {
+  @apply w-[500px]
+    bg-white
+    flex
+    flex-col 
+    justify-between 
+    items-start 
+    py-[45px]
+    px-[30px]
+    font-sans 
+    font-bold
+    relative;
+}
+
+.modalInner {
+  @apply place-self-start
+    text-blackGray 
+    font-medium 
+    text-xl 
+    border-y-[3px] 
+    border-gray 
+    w-[480px] 
+    py-[10px] 
+    -ml-[20px] 
+    px-[20px];
+}
+
+.modalAlert {
+  @apply absolute
+    top-0
+    left-[calc(50%-175px)]
+    bg-white
+    h-[200px]
+    w-[350px]
+    p-[30px]
+    border-violet
+    border-[1px];
+}
+
+.cardService {
+  @apply font-sans 
+  h-[250px] 
+  w-[350px] 
+  rounded-[20px]
+  shadow-[0px_0px_20px_0_rgba(0,0,0,0.25)]
+  px-[45px]
+  py-[15px]
+  flex
+  flex-col
+  justify-between
+}

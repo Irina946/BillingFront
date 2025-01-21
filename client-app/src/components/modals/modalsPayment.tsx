@@ -16,7 +16,6 @@ export const ModalPayment = ({ isOpen }: { isOpen: boolean }): JSX.Element => {
     const { register, handleSubmit } = useForm<IForm>()
 
     const handleSubmitFormPayment = (formValue: IForm) => {
-        console.log(formValue);
         setIsOpenPayment(false);
     }
 

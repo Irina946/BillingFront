@@ -29,7 +29,6 @@ export const Lk = (): JSX.Element => {
     fetchClients();
   }, []);
 
-  // Фильтрация клиентов
   const filteredClients = clients.filter(client => {
     const searchText = search.toLowerCase();
     return (
@@ -70,7 +69,7 @@ export const Lk = (): JSX.Element => {
         </div>
         <div className="p-[45px] pt-[15px]">
           {error && <div>{error}</div>}
-          <Pagination listClient={filteredClients} /> {/* Отображение отфильтрованных клиентов */}
+          <Pagination listClient={filteredClients} />
         </div>
       </div>
 

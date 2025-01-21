@@ -10,7 +10,8 @@ interface CardTariffProps {
     price: number,
     minutes: number,
     sms: number,
-    internet: number
+    internet: number,
+    handleConnecting: () => void
 }
 
 export const CardTariffs = (props: CardTariffProps): JSX.Element => {
@@ -65,7 +66,7 @@ export const CardTariffs = (props: CardTariffProps): JSX.Element => {
                         <div className='self-center'>
                             <ButtonBigViolet
                             title={`Подключить за ${props.price} ₽`}
-                            onClick={() => setIsOpenModal(false)}
+                            onClick={() =>props.handleConnecting}
                         />
                         </div>
 
